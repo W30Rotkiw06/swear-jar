@@ -1,19 +1,32 @@
 import './App.css';
 import React, {Component} from 'react';
-import LoginScreen from './pages/LoginScreen';
+import WelcomeScreen from './pages/WelcomeScreen';
 import MyButton from './components/MyButton';
+import Login from './pages/Login';
+import { supabase } from './components/Client';
+import { useState, useEffect } from 'react';
+
 
 class App extends Component{
   constructor(props){
     super(props);
-    const {session} = props;
+    
     this.state = {
+      supabase: supabase,
       page: "start",
       previous: "",
-      session: props.session
+      session: "",
+      email: "",
     }
 
-  } 
+
+  }
+  
+  
+  ImportLoginData = (arg, val)=>{
+    this.setState({[arg]: val});
+  }
+
 
   ButtonClicked = event =>{
     this.setState(
@@ -28,32 +41,35 @@ class App extends Component{
       {page: this.state.previous, 
         previous: "",
       }
-    )
+    );
   }
+
 
 
   
   render(){
-    
-      {if(this.state.page == "start"){
-        return (
-        <div className='App'>
-          <LoginScreen fn={this.ButtonClicked}/>      
-        </div>
-        )
-      }
-        else{
+
+
+      {switch(this.state.page){
+        case "start":
           return (
-            <div className='App'>
-              <MyButton name="back" className="standard-button" displayedText="BACK" onClick={this.BackButton}/>
-            </div>
-            
-            
+          <div className='App'>
+            <WelcomeScreen fn={this.ButtonClicked}/>      
+          </div>
           )
-        
-      }}
-    
+
+      
+        case "login":
+            return (
+              <div className='App'>
+                <Login fun={this.ImportLoginData} {...this.state}/> 
+              
+              </div>
+            )
+
+      }
   }
+}
 }
 
 

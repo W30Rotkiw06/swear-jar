@@ -1,23 +1,22 @@
-import icon from "../main icon.png";
+import BigLogo from "../components/BigLogo";
 import MyButton from "../components/MyButton";
 
-var LoginScreen = props => {
+var WelcomeScreen = props => {
     const {fn} = props
     return(
-        <div className="App">
-        <header><img src={icon} className="App-logo" alt="logo" /></header>
+        <div>
+        <BigLogo/>
+        <div className="Login-interface">
         <h1>Swear jar</h1>
-
           <p>
             Welcome to swear jar app.<br/>Log in or sign up to continue. 
           </p>
 
-          <MyButton name="login" className="standard-button" displayedText="LOG IN" onClick={fn} />
-          <br/>
+          <MyButton name="login" className="standard-button" displayedText="LOG IN" onClick={fn} /><br/>
           <MyButton name="signup" className="standard-button-dark" displayedText="SIGN UP" onClick={fn}/>  
         
-      </div>
+      </div></div>
     );
 }
 
-export default LoginScreen;
+export default WelcomeScreen;
