@@ -3,12 +3,11 @@ import PropTypes from "prop-types";
 
 
 const  MyInput = props =>{
-    var {label, type, name, value, className, onChange, onFocus, additionalInfo} = props;
-    if (name === "password"){type=name}
+    var {label, type, name, value, className, onChange, onFocus, additionalInfo, autoFocus=false} = props;
     return(
         <div>
             <p className="Input-label" htmlFor={name}>{label}</p>
-            <input type={type} id={name} name={name} value={value} className={className} onChange={onChange}  onFocus={onFocus}/>
+            <input type={type} id={name} name={name} value={value} className={className} onChange={onChange}  onFocus={onFocus} autoFocus={autoFocus}/>
             <p className="Add-info-input">{additionalInfo}</p>
         </div>
     );
