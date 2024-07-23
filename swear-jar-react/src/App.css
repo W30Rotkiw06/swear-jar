@@ -175,13 +175,58 @@ html{
 
 
 /* Swear jar app */
+.head{
+  justify-content: center;
+  align-self:center;
+  align-items: center;
+  display: flex ;
+}
+
+
+.profile-picture{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  position: relative;
+  top: 4px;
+  left: 12px;
+}
+
+
 .headline{
   color: #fff;
   font-size: 36px;
   text-align: center;
   position: relative;
-  right: 50px
+  right: 10px
 }
+
+.prompt{
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  position: absolute;
+  top: 60px
+}
+
+.add-new-jar-button{
+  background-color: #6FD39C;
+  border: 1px solid #6FD39C;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  display: grid;
+  font-size: 30px;
+}
+
+.add-new-jar-button:active{
+  background-color: #5cb182;
+}
+
 .jar_container{
   text-align: center;
   align-items: center;
@@ -198,7 +243,6 @@ html{
   border-radius: 35px;
   color: #000;
   width: 313px;
-  height: 80px;
   align-items: left;
   justify-content: center;
   text-align: left;
@@ -206,10 +250,16 @@ html{
   border: 2px solid #fff;
   margin: 10px;
   transition: height 0.5s;
+  cursor: pointer;
+}
+
+.simple{
+  height: 80px;
 }
 
 .details{
-  height: 480px;
+  min-height: 480px;
+  display: block;
   transition: height 0.5s;
 }
 /* colors of jars*/
@@ -241,7 +291,7 @@ html{
 
 .jar-name-long{
   position: absolute;
-  bottom: 29px;
+  top: -7px;
   left: 35px;
   font-size: 18px;
   font-weight: 600;
@@ -262,4 +312,149 @@ html{
   font-size: 20px;
   color: #363333;
   font-weight: 500;
+}
+
+/* detailed view*/
+
+
+.jar-settings-logo{
+  position: absolute;
+  top: 10px;
+  right: 35px;
+  height: 30px;
+  width: 30px ;
+}
+@media(prefers-reduced-motion: no-preference){
+  .jar-settings-logo{
+    animation: Settings-spin infinite 15s linear;
+  }
+}
+
+@keyframes Settings-spin{
+  from{
+    transform: rotate(0deg);
+  }to{
+    transform: rotate(360deg);
+  }
+}
+
+.jar-close-button{
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background-color: red;
+  color: #fff;
+  border-radius: 20px;
+  left: -10px;
+  top: -10px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: 100;
+  font-size: 40px;
+}
+
+.jar-header-line{
+  border-top: 1px solid #fff;
+  width: 311px;
+  color: #fff;
+  background-color: #fff;
+}
+
+.jar-report{
+  text-align: center;
+  position: absolute;
+  top: 38px;
+  width: 313px;
+  display: inline;
+}
+.jar-highlit{
+  position: relative;
+  bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.jar-report-member-choose{
+  display: flex;
+  text-align: center;
+  width: 313px;
+  align-items: center;
+  align-self: center;
+  position: absolute;
+  justify-content: center;
+  top: 40px;
+}
+
+.jar-report-member-view{
+  font-size: 14px;
+  font-weight: 600;
+  width: 50px;
+  margin: 5px;
+  height: 80px;
+}
+
+
+.jar-report-member-view:hover{
+  background-color: 1px solid rgba(111, 211, 136, 1);
+  color: rgb(31, 30, 68);
+}
+
+.jar-report-member-picture{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  position: relative;
+  top: 10px;
+}
+
+
+.jar-report-member-view-small{
+  font-size: 12px;
+  font-weight: 600;
+  margin: 3px;
+  height: 80px;
+}
+
+
+.jar-report-member-view-small:hover{
+  background-color: 1px solid rgba(111, 211, 136, 1);
+  color: rgb(31, 30, 68);
+}
+
+.jar-report-member-picture-small{
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+  position: relative;
+  top: 10px;
+}
+
+.chart{
+  position: absolute;
+  top: 170px;
+  width: 313px;
+  text-align: center;
+}
+
+.pie{
+  font-size: 10px;
+  position: relative;
+  bottom: 20px;
+  
+}
+
+.pie-center{
+  position: absolute;
+  color: #000;
+  width: 313px;
+  top: 120px;
+  font-weight: 600;
+}
+
+.pie-center-details{
+  position: relative;
+  top: -25px;
+  font-size: 12px;
 }
