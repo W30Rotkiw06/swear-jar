@@ -7,7 +7,7 @@ import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
 import Offline from './pages/Offline';
 import Home from './pages/Home';
-import AddNewJar from './pages/AddNewJAr';
+import AddNewJar from './components/jar/AddNewJar';
 
 
 class App extends Component{
@@ -111,10 +111,6 @@ class App extends Component{
             <div className='swear-jar'>
             <Home fun={this.ImportLoginData} {...this.state} internet={this.checkInternet} back={this.BackButton}/> 
             </div>
-          )
-        case "add_new_jar":
-          return(
-            <AddNewJar {...this.state} internet={this.checkInternet}/>
           )
         default:
           return(

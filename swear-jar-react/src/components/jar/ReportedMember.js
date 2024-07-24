@@ -22,7 +22,7 @@ class ReportedMember extends Component{ // można przepisać na funckcję
     render(){
         return(
             <div className={this.state.div_class} onClick={this.reportSelf}>
-                <img className={this.state.img_class} src={this.props.profile_picture} alt=""/>
+                <img style={{border: "2px solid", borderColor: this.props.color}} className={this.state.img_class} src={this.props.profile_picture} alt=""/> 
                 <p>{this.props.nickname}</p>
             </div>
         )

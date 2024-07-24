@@ -11,9 +11,11 @@ class Jar extends Component {
             members_names_list: [this.props.name],
             members_colors: [],
             members_profile_pictures: [this.props.profile_picture],
-            members_formated: "Loading content..."
+            members_formated: "Loading content...",
+            jar_height: "80"
         }
     }
+
 
     componentDidMount = async() =>{
         let members_formated = "You";
@@ -54,18 +56,26 @@ class Jar extends Component {
         this.setState({show_details: !this.state.show_details})
     }
 
+    changeHeight = (newHeight) =>{
+        this.setState({jar_height: newHeight})
+    }
+
     
     render(){
-        if (this.state.show_details === false){
-            return(<JarSimple jar={this.props.jar} onClick={this.showHideDetails} {...this.state}/>)
-        } else{
-            return(
-            <JarDetails jar={this.props.jar} close={this.showHideDetails} {...this.state} session={this.props.session} supabase={this.props.supabase}/>
+        
+        return(
+            <div className="jar" style={{backgroundColor: this.props.jar.color, height:this.state.jar_height + "px"}}>
+            {this.state.show_details === false?
+                <JarSimple changeHeight={this.changeHeight}  jar={this.props.jar} onClick={this.showHideDetails} {...this.state}/>
+                :
+                <JarDetails changeHeight={this.changeHeight} jar={this.props.jar} close={this.showHideDetails} {...this.state} session={this.props.session} supabase={this.props.supabase}/>
+            }
+            </div>
         )
+
         }
     }
-    
-}
+
 
 
 

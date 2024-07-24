@@ -22,7 +22,6 @@ html{
   pointer-events: none;
   position: absolute;
   top: 180px;
-   /*  relative to nearest positioned ancestor or body element */
   transform: translate(-50%, -50%); /* relative to element's height & width */
 }
 
@@ -31,6 +30,7 @@ html{
   left: 50%; 
   top: 50%;
   transform: translate(-50%, -50%);
+  
 }
 
 
@@ -54,6 +54,7 @@ html{
   font-size: 20px;
   font-weight: bold;
   transform: translate(-180px, 0px);
+  cursor: pointer;
 }
 .back-button:hover{
   color: rgba(111, 211, 136, 0.95)
@@ -74,6 +75,7 @@ html{
   font-size: 20px;
   font-weight: bolder;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .standard-button:active{
@@ -97,6 +99,7 @@ html{
   align-self: center;
   font-size: 20px;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 .standard-button-dark:active{
@@ -148,6 +151,7 @@ html{
   position: relative;
   justify-content: left;
   text-align: left;
+  font-size: 20px;
 
   transform: translate(-45px, 20px);
 
@@ -171,6 +175,7 @@ html{
 .login-signup-inputs{
   position: relative;
   top: 30px;
+  
 }
 
 
@@ -249,17 +254,18 @@ html{
   position: relative;
   border: 2px solid #fff;
   margin: 10px;
-  transition: height 0.5s;
+  transition: height 0.4s;
   cursor: pointer;
 }
 
 .simple{
-  height: 80px;
+  height: 60px;
 }
 
 .details{
-  min-height: 480px;
+
   display: block;
+  cursor: default;
   transition: height 0.5s;
 }
 /* colors of jars*/
@@ -323,6 +329,7 @@ html{
   right: 35px;
   height: 30px;
   width: 30px ;
+  cursor: pointer;
 }
 @media(prefers-reduced-motion: no-preference){
   .jar-settings-logo{
@@ -353,6 +360,7 @@ html{
   flex-direction: column;
   font-weight: 100;
   font-size: 40px;
+  cursor: pointer;
 }
 
 .jar-header-line{
@@ -393,6 +401,7 @@ html{
   width: 50px;
   margin: 5px;
   height: 80px;
+  cursor: pointer;
 }
 
 
@@ -404,7 +413,7 @@ html{
 .jar-report-member-picture{
   width: 50px;
   height: 50px;
-  border-radius: 25px;
+  border-radius: 27px;
   position: relative;
   top: 10px;
 }
@@ -458,3 +467,85 @@ html{
   top: -25px;
   font-size: 12px;
 }
+
+.add-jar-win {
+  padding: 20px;
+  border: 3px solid;
+  border-radius: 20px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 276px;
+  height: 185px;
+  transform: translate(-50%, -50%);  
+  background-color: rgba(0, 0, 0, 0.93);
+  align-items: center;
+  z-index: 1;
+}
+
+
+.add-new-jar{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  width: 100%;
+  position: relative;
+  top: -30px;
+  color: #5cb182;
+}
+ 
+
+.input-lbl-add-new-jar{
+  position: relative;
+  left: 5px;
+}
+
+.jar-input{
+  position: relative;
+  left: 170px;
+  font-weight: 700;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.add-jar-label{
+  position: relative;
+  left: 67px;
+  color: #fff
+}
+
+.add-jar-error{
+  position: absolute;
+  top: 88px;
+  transform: translate(-26px, 20px);
+  color: red;
+}
+
+.color-button{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  left: 30px;
+  font-weight: 600;
+  top: 5px;
+  cursor: pointer;
+}
+
+.color-pallete{
+  background-color: #000;
+  position: relative;
+  left: 37px;
+  z-index: 4;
+}
+
+.button-add-jar{
+  position: relative;
+  width: 200px;
+  transform: translate(0px, 4px);
+  z-index: 2;
+}
+
+
+

@@ -48,6 +48,7 @@ class Login extends Component{
     // Logging to swear jar using data given earlier
     logToSupabase = async () =>{
         this.props.internet()
+        this.setState({btn_lbl: "LOGGING IN..."});
         try {
             const { data, error } = await this.props.supabase.auth.signInWithPassword({
                 email: this.state.email,
@@ -55,9 +56,9 @@ class Login extends Component{
             });
 
             if (error) {
+                this.setState({btn_lbl: "CONTINUE"});
                 throw new Error(error.message); // handle error egz. wrong password
             }else{
-                this.setState({btn_lbl: "LOGGING IN..."});
                 this.props.fun("session", data); // send session to app.js
                 this.props.fun("email", this.state.email)
                 setTimeout(() => {this.props.fun("page", "home");}, 500);

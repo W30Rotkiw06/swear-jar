@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Jar from "../components/jar/Jar";
 import MyButton from "../components/MyButton"
+import AddNewJar from "../components/jar/AddNewJar";
 
 class Home extends Component{
     constructor(props){
@@ -12,6 +13,7 @@ class Home extends Component{
             profile_picture: "",
             message: "Loading content...",
             deafult_color: "",
+            add_new_jar_window: false,
         }
     }
 
@@ -53,15 +55,10 @@ class Home extends Component{
         }
         let message = jars_with_user.length === 0? "You don't have any opened swear jars yet": "";
         this.setState({avalaible_jars: jars_with_user, message: message})
-
-
-
-        
     }
 
-    addNewJar = () =>{
-        this.props.fun("previous", "home")
-        this.props.fun("page", "add_new_jar")
+    openCloseAddJarWin = () =>{
+        this.setState({add_new_jar_window: !this.state.add_new_jar_window})
     }
 
 // this.state.books.map((book, i) => (<BookDescription key = {i} book={book} deleteBook={this.deleteBook}/>))
@@ -73,14 +70,14 @@ class Home extends Component{
                     <img className="profile-picture" src={this.state.profile_picture} alt='pct'/>
                     <p className="prompt">{this.state.message}</p>
                 </div>
-                
 
                 <div className='jar_container'>
                 {
                     this.state.avalaible_jars.map(jar =>(<Jar jar={jar} key={jar.name} {...this.state} {...this.props}/>))// jakby coś nie działało tow 
                 }
+                {this.state.add_new_jar_window? (<AddNewJar email={this.state.email} {...this.props} closeWin={this.openCloseAddJarWin}/>): (<></>)}
             </div>
-                <MyButton name="add_neq_jar" className="add-new-jar-button" onClick={this.addNewJar} displayedText="+"/>
+                <MyButton name="add_new_jar" className="add-new-jar-button" onClick={this.openCloseAddJarWin} displayedText="+"/>
             </div>
         )
     }

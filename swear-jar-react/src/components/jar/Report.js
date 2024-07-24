@@ -27,7 +27,17 @@ class Report extends Component{
                 <p className="jar-highlit">Who said naughty word?</p>
                 <div className="jar-report-member-choose">
                 {
-                    this.props.members_list.map((person, i) =>(<ReportedMember key={this.props.members_names_list[i]} id={i} report={this.reportMe} email={person} nickname={this.props.members_names_list[i]} profile_picture={this.props.members_profile_pictures[i]} size={this.state.size} session={this.props.session} supabase={this.props.supabase}/>))
+                    this.props.members_list.map((person, i) =>
+                        (<ReportedMember key={this.props.members_names_list[i]}
+                            id={i}
+                            report={this.reportMe}
+                            email={person}
+                            nickname={this.props.members_names_list[i]}
+                            profile_picture={this.props.members_profile_pictures[i]}
+                            size={this.state.size}
+                            color={this.props.members_colors[i]}
+                            session={this.props.session}
+                            supabase={this.props.supabase}/>))
                 }
             </div></div>  
         )

@@ -30,11 +30,15 @@ const Chart = (props) =>{
             animate={true}
             startAngle={-90}
             style={{ width: "220px"}}
-            segmentsStyle={{border: "1px solid white"}}
+            segmentsStyle={{border: "1px solid", borderColor: "black"}}
             lineWidth={40}
             label={({ dataEntry }) => (dataEntry.value)}
             labelPosition={80}
+            reveal={100}
             />
+
+
+
 
         </div>
     )
