@@ -9,13 +9,18 @@ class JarDetails  extends Component{
         let jar_name_class = props.jar.name.length >12 ? "jar-name-long": "jar-name"
         this.state = {
             jar_name_class: jar_name_class,
-        }
+        };
+    }
+
+    componentDidMount = () =>{
+        let height = this.props.jar.total_money === 0? 180: 480;
+        this.props.changeHeight(height);
     }
 
     componentDidUpdate = ()=>{
         let height = this.props.jar.total_money === 0? 180: 480;
         if (this.props.jar_height !== height){
-        this.props.changeHeight(height)}
+        this.props.changeHeight(height);}
     }
     
     

@@ -7,7 +7,7 @@ import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
 import Offline from './pages/Offline';
 import Home from './pages/Home';
-import AddNewJar from './components/jar/AddNewJar';
+import ProfileSettings from './pages/ProfileSettings/ProfileSettings';
 
 
 class App extends Component{
@@ -19,6 +19,8 @@ class App extends Component{
       supabase: supabase,
       session: "",
       email: "",
+      name: "",
+      profile_picture: "",
       other_mails: "",
       online: ""
     }
@@ -112,9 +114,16 @@ class App extends Component{
             <Home fun={this.ImportLoginData} {...this.state} internet={this.checkInternet} back={this.BackButton}/> 
             </div>
           )
+
+        case "profile-settings":
+          return(
+            <div className='swear-jar'>
+              <ProfileSettings back={this.BackButton} changeAppState={this.ImportLoginData} {...this.state}/>
+            </div>
+          )
         default:
           return(
-            <h1>coś się zjebało</h1>
+            <h1>Sth went wrong</h1>
           )
 
       }

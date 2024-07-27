@@ -32,14 +32,18 @@ class Home extends Component{
         // Import profile picture
 
         const { data: profile_picture_data, error: error_pp } = await this.props.supabase.storage.from('profile_pictures')
-          .download(pp_file_name);
+          .download(`${pp_file_name}?t=${new Date().getTime()}`);
           if (error_pp) {console.error("Error downloading profile picture:", error_pp);
           this.setState({ name: name[0], email: this.props.email, error: error_pp });
           return;
         }
         
-        const profile_picture_url = URL.createObjectURL(profile_picture_data);
+        const profile_picture_blob = new Blob([profile_picture_data]);
+        const profile_picture_url = URL.createObjectURL(profile_picture_blob);
+        
         this.setState({name: name[0],email: this.props.email,profile_picture: profile_picture_url, color: color});
+        this.props.fun("name", name[0])
+        this.props.fun("profile_picture", profile_picture_url)
       }
 
 
@@ -61,13 +65,18 @@ class Home extends Component{
         this.setState({add_new_jar_window: !this.state.add_new_jar_window})
     }
 
+    openProfileSettings = () => {
+        this.props.fun("page","profile-settings");
+        this.props.fun("previous", "home")
+    }
+
 // this.state.books.map((book, i) => (<BookDescription key = {i} book={book} deleteBook={this.deleteBook}/>))
     render() {
         return(
             <div>
                 <div className="head">
                     <h1 className="headline">Your swear jars</h1>
-                    <img className="profile-picture" src={this.state.profile_picture} alt='pct'/>
+                    <img className="profile-picture" onClick={this.openProfileSettings} src={this.state.profile_picture} alt='pct'/>
                     <p className="prompt">{this.state.message}</p>
                 </div>
 
@@ -76,8 +85,9 @@ class Home extends Component{
                     this.state.avalaible_jars.map(jar =>(<Jar jar={jar} key={jar.name} {...this.state} {...this.props}/>))// jakby coś nie działało tow 
                 }
                 {this.state.add_new_jar_window? (<AddNewJar email={this.state.email} {...this.props} closeWin={this.openCloseAddJarWin}/>): (<></>)}
+                  
+                <MyButton name="add_new_jar" className="standard-button add-new-jar-button" onClick={this.openCloseAddJarWin} displayedText="CREATE NEW JAR"/>
             </div>
-                <MyButton name="add_new_jar" className="add-new-jar-button" onClick={this.openCloseAddJarWin} displayedText="+"/>
             </div>
         )
     }

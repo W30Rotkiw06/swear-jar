@@ -12,19 +12,24 @@ class AddNewJar extends Component{
             jar_msg: "",
             jar_color: "#5cb182",
             jar_members: "",
-            show_pallete: false
+            show_pallete: false,
+            button_isactive: false
         }
     }
 
     // Save values from input
     checkName = event =>{
         let inputValue = event.target.value;
-        if(inputValue.length >20){
-            this.setState({jar_msg: "Name is too long"})
+        if(inputValue.length <=20 && inputValue.length >0){
+            this.setState({jar_msg: "", jar_name: inputValue, button_isactive: true})
         }else{
-            this.setState({jar_msg: ""})
-            this.setState({jar_name: inputValue})}
-        
+            if (inputValue.length >20){
+                this.setState({jar_msg: "Jar name is too long", button_isactive: false})
+            }
+            else{
+                this.setState({jar_msg: "Enter jar name", jar_name: inputValue, button_isactive: false})
+            }
+        }
     }
     
     showHidePallete =()=>{
@@ -73,7 +78,7 @@ class AddNewJar extends Component{
                     <div>
                     <TwitterPicker onChange={this.handleColorChange} className="color-pallete" triangle="top-right" width="205px"/>
                     </div>
-                    ): <button onClick={this.createJar} style={{backgroundColor: this.state.jar_color, borderColor: this.state.jar_color}} name="create-jar" className="standard-button button-add-jar">CREATE JAR</button>
+                    ): <button disabled={!this.state.button_isactive} onClick={this.createJar} style={{backgroundColor: this.state.jar_color, borderColor: this.state.jar_color}} name="create-jar" className="standard-button button-add-jar">CREATE JAR</button>
                 }
                 <div style={{width: "30px", height: "30px", color: "blue    "}}/>
                 </div>
