@@ -7,7 +7,6 @@ class ChangeName extends Component{
         super(props);
         this.state = {
             name: "",
-            msg: "",
             button_isactive: false
         }
     }
@@ -20,6 +19,17 @@ class ChangeName extends Component{
         }
     }
 
+    saveChanges = async() =>{
+        const {error} = await this.props.supabase.from("users").update({user_nickname: this.state.name}).eq("user_mail", this.props.email)
+        if (error) {console.error("Error");}
+
+        const {data: user, error: user_error } = await this.props.supabase.auth.updateUser({
+            data: {nickname: this.state.name }
+        })
+        if (user_error) {console.error("Error");}
+        this.props.back()
+    }
+
     render(){
         return(
             <div style={{position: "relative", "top": "20px"}}>
@@ -28,7 +38,7 @@ class ChangeName extends Component{
                 </div>
                 
                 <div className="head">
-                    <h1 style={{fontSize: "28px"}} className="headline">Change displayed name</h1>
+                    <h1 style={{fontSize: "28px"}} className="headline-left">Change displayed name</h1>
                 </div>
 
                 <div className='jar_container'>
@@ -40,8 +50,9 @@ class ChangeName extends Component{
                 addClassName="change-profile-data-lbl"
                 addClassNameMsg="change-profile-data-lbl-error"
                 autoFocus={true}
-                onChange={this.checkName}
-                additionalInfo={this.state.msg}/>
+                onChange={this.checkName}/>
+
+                <MyButton className="standard-button" displayedText="SAVE CHANGES" name="name" isDisabled={!this.state.button_isactive} onClick={this.saveChanges}/>
                 </div>
             </div>
         )

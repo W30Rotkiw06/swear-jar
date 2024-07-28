@@ -25,7 +25,8 @@ class ChangeProfilePicture extends Component{
                 new_file: newFile,
                 file: fileURL,
                 file_name: newFileName,
-                save_button: true
+                save_button: true,
+                buttton_text: "SAVE CHANGES"
             });
             }
         };
@@ -37,6 +38,7 @@ class ChangeProfilePicture extends Component{
 
     saveChanges = async() => {
         // import old profile pct file name
+        this.setState({buttton_text: "SAVING..."})
         var {data, error} = await this.props.supabase.from("users").select().eq("user_mail", this.props.email);
         let file_name = data[0].profile_picture;
 
@@ -55,8 +57,8 @@ class ChangeProfilePicture extends Component{
             })
         }
 
-        var {error} = await this.props.supabase.from("users").update({profile_picture: file_name}).eq("user_mail", this.props.email)
-        this.props.backToSettings()
+        await this.props.supabase.from("users").update({profile_picture: file_name}).eq("user_mail", this.props.email)
+        this.props.back()
     } 
 
     render(){
@@ -68,7 +70,7 @@ class ChangeProfilePicture extends Component{
                 </div>
                 
                 <div className="head">
-                    <h1 style={{fontSize: "28px"}} className="headline">Change profile picture</h1>
+                    <h1 style={{fontSize: "28px"}} className="headline-left">Change profile picture</h1>
                 </div>
 
                 <div className='jar_container'>
@@ -77,7 +79,7 @@ class ChangeProfilePicture extends Component{
                     <button style={{marginTop: "20px"}} onClick={this.handleClick} className="standard-button">SELECT FILE</button>
 
                     {
-                        this.state.save_button? <MyButton className="standard-button-dark" onClick={this.saveChanges} displayedText="SAVE CHANGES"/>: <></>
+                        this.state.save_button? <MyButton className="standard-button-dark" onClick={this.saveChanges} displayedText={this.state.buttton_text}/>: <></>
                     }
 
                     <input 

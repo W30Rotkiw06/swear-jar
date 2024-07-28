@@ -40,7 +40,7 @@ class Home extends Component{
         
         const profile_picture_blob = new Blob([profile_picture_data]);
         const profile_picture_url = URL.createObjectURL(profile_picture_blob);
-        
+
         this.setState({name: name[0],email: this.props.email,profile_picture: profile_picture_url, color: color});
         this.props.fun("name", name[0])
         this.props.fun("profile_picture", profile_picture_url)
@@ -48,6 +48,7 @@ class Home extends Component{
 
 
     componentDidUpdate = async() =>{ // downloading jars
+        this.props.internet()
         let jars_with_user = []
         let jar_list = (await this.props.supabase.from("jars").select().order('id', {ascending: true })).data
         for (let jar of jar_list){

@@ -201,13 +201,19 @@ html{
   cursor: pointer;
 }
 
-
 .headline{
   color: #fff;
   font-size: 36px;
   text-align: center;
   position: relative;
-  right: 10px
+}
+
+.headline-left{
+  color: #fff;
+  font-size: 36px;
+  position: relative;
+  width: 340px;
+  text-align: left;
 }
 
 .prompt{
@@ -331,8 +337,8 @@ html{
   cursor: pointer;
 }
 @media(prefers-reduced-motion: no-preference){
-  .jar-settings-logo{
-    animation: Settings-spin infinite 15s linear;
+  .jar-settings-logo:hover{
+    animation: Settings-spin infinite 5s linear;
   }
 }
 
@@ -552,7 +558,7 @@ html{
 .back-button-transform{
   position: relative;
   top: 5px;
-  left: 70px;
+  left: 48px;
   text-align: center;
 }
 
@@ -639,13 +645,13 @@ html{
 
 .color-pallete-settings{
   position: absolute;
-  top: -164px;
-  left: 101px;
+  top: -163px;
+  left: 46px;
 }
 
 .change-profile-data-lbl{
   position: relative;
-  right: -40px;
+  right: -50px;
   top: -30px;
 }
 
@@ -653,11 +659,15 @@ html{
   align-items: center;
   text-align: left;
   position: relative;
-  left: 160px;
+  left: 170px;
   top: -30px
 }
 
 .change-profile-data-lbl-error{
   position: relative;
   bottom: 150px;
+}
+
+.input-border{
+  margin-bottom: 30px;
 }

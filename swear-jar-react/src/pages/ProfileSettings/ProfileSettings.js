@@ -1,8 +1,12 @@
 import { Component } from "react";
 import MyButton from "../../components/MyButton";
 import SettingSegment from "../../components/SettingSegment";
+
 import ChangeProfilePicture from "./ChangeProfilePicture";
 import ChangeName from "./ChangeName";
+import ChangeEmail from "./ChangeEmail";
+import ChangePassword from "./ChangePassword";
+
 import { TwitterPicker } from "react-color";
 
 class ProfileSettings extends Component{
@@ -30,7 +34,7 @@ class ProfileSettings extends Component{
     }
 
     logOut = async() =>{
-        const { error } = await this.props.supabase.auth.signOut()
+        await this.props.supabase.auth.signOut()
         this.props.changeAppState("session", "");
         this.props.changeAppState("previous", "");
         this.props.changeAppState("page", "start");
@@ -43,6 +47,15 @@ class ProfileSettings extends Component{
     changeName = () =>{
         this.setState({settings_page: "change-name"});
     }
+
+    changeEmail = () =>{
+        this.setState({settings_page: "change-email"});
+    }
+
+    changePassword = () =>{
+        this.setState({settings_page: "change-password"});
+    }
+
 
     backToSettings = () =>{
         this.setState({
@@ -73,32 +86,35 @@ class ProfileSettings extends Component{
                     </div>
                     
                     <div className="head">
-                        <h1 className="headline">Hello, {this.props.name}</h1>
+                        <div style={{width: "250px", textAlign: "left"}}>
+                            <h1 style={{position: "relative", right: "20px", textAlign: "left"}} className="headline" >Hello, {this.props.name}</h1>
+                        </div>
+                        
                         <img style={{cursor: "default"}} className="profile-picture" src={this.props.profile_picture} alt='pct'/>
                     </div>
     
                     <div className='jar_container'>
-                        <div style={{width: "310px", textAlign: "left", position: "relative", left: "8px", top: "-15px"}}>
+                        <div style={{width: "350px", textAlign: "left", position: "relative", left: "8px", top: "-15px"}}>
                             <p>
                                 You reported your friends <span style={{color: "#E91C74"}}>{this.state.reported_sb}&nbsp;times,</span> while they reported you <span style={{color: "#E91C74"}}>{this.state.was_reported}&nbsp;times.</span>
                             </p>
                         </div>
     
-                        <div className="settings">
+                        <div style={{position: "relative", left: "20px"}} className="settings">
                             <SettingSegment image={this.props.profile_picture} name="Change profile picture" onClick={this.chooseProfilePicture}/>
                             <SettingSegment image={this.props.profile_picture} name="Change your color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
                             <SettingSegment image={this.props.profile_picture} name="Change name" onClick={this.changeName}/>
-                            <SettingSegment image={this.props.profile_picture} name="Change email"/>
-                            <SettingSegment image={this.props.profile_picture} name="Change password"/>
+                            <SettingSegment image={this.props.profile_picture} name="Change email" onClick={this.changeEmail}/>
+                            <SettingSegment image={this.props.profile_picture} name="Change password" onClick={this.changePassword}/>
                         </div>
 
                         
                         <MyButton key="log out" name="log_out" className="standard-button-dark add-new-jar-button red-close-button" onClick={this.logOut} displayedText="LOG OUT"/>
                         {this.state.color_pallete? (
-                                <div>
-                                <TwitterPicker onChange={this.handleColorChange} className="color-pallete-settings" triangle="top-right" width="205px"/>
-                                </div>
-                                ): <></>
+                            <div>
+                                <TwitterPicker onChange={this.handleColorChange} className="color-pallete-settings" triangle="top-right" width="280px"/>
+                            </div>
+                            ): <></>
                             }
                     </div>
                 </div>
@@ -110,6 +126,14 @@ class ProfileSettings extends Component{
             case "change-name":
                 return(
                     <ChangeName {...this.props} backToSettings={this.backToSettings}/>
+                )
+            case "change-email":
+                return(
+                    <ChangeEmail {...this.props} backToSettings={this.backToSettings}/>
+                )
+            case "change-password":
+                return(
+                    <ChangePassword {...this.props} backToSettings={this.backToSettings}/>
                 )
         }
         

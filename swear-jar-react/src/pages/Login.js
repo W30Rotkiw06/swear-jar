@@ -73,7 +73,8 @@ class Login extends Component{
             if (error.message === "Invalid login credentials"){error.message = "Password is incorrect"}
             this.setState({ 
                 data: null,
-                password_comment: error.message 
+                password_comment: error.message,
+                password: "" 
             });
         }
     }

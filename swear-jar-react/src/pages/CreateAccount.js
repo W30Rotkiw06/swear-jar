@@ -61,32 +61,32 @@ class CreateAccount extends Component{
         }else{this.setState({"email": email, btn_is_disabled: true, mail_correct: mail_correct})}
     }
 
-        checkPasswords= event =>{
-            let inputName = event.target.name;
-            let inputValue = event.target.value;
-            let password, password2
-            // na ifach, pierwsza wartość z inputa, druga ze state
-            if (inputName === "password"){
-                password = inputValue;
-                password2 = this.state.password2
-            }else{
-                password = this.state.password
-                password2 = inputValue;
-            }
+    checkPasswords= event =>{
+        let inputName = event.target.name;
+        let inputValue = event.target.value;
+        let password, password2
 
-            if (password.length < 8){
-                this.setState({password_comment: "Your password is too short", btn_is_disabled: true})}
-            else{this.setState({password_comment: ""})}
-
-            if(password !== password2 && password2 !== ""){
-                this.setState({password_comment2: "Passwords are diffrent", btn_is_disabled: true})}
-            else{this.setState({password_comment2: ""})}
-
-            if (password.length >=8 && password === password2 && this.state.mail_correct === true){
-                this.setState({password_comment: "", password_comment2: "", btn_is_disabled: false})
-            }
-            this.setState({[inputName]: inputValue})
+        if (inputName === "password"){
+            password = inputValue;
+            password2 = this.state.password2
+        }else{
+            password = this.state.password
+            password2 = inputValue;
         }
+
+        if (password.length < 8){
+            this.setState({password_comment: "Your password is too short", btn_is_disabled: true})}
+        else{this.setState({password_comment: ""})}
+
+        if(password !== password2 && password2 !== ""){
+            this.setState({password_comment2: "Passwords are diffrent", btn_is_disabled: true})}
+        else{this.setState({password_comment2: ""})}
+
+        if (password.length >=8 && password === password2 && this.state.mail_correct === true){
+            this.setState({password_comment: "", password_comment2: "", btn_is_disabled: false})
+            }
+        this.setState({[inputName]: inputValue})
+    }
     
     // Signing up to swear jar using data given earlier
     signUpToSupabase = async () =>{
