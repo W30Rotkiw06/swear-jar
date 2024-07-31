@@ -48,7 +48,6 @@ class Home extends Component{
 
 
     componentDidUpdate = async() =>{ // downloading jars
-        this.props.internet()
         let jars_with_user = []
         let jar_list = (await this.props.supabase.from("jars").select().order('id', {ascending: true })).data
         for (let jar of jar_list){
@@ -76,7 +75,7 @@ class Home extends Component{
         return(
             <div>
                 <div className="head">
-                    <h1 className="headline">Your swear jars</h1>
+                    <h1 style={{position: "relative", right: "4px"}} className="headline">Your swear jars</h1>
                     <img className="profile-picture" onClick={this.openProfileSettings} src={this.state.profile_picture} alt='pct'/>
                     <p className="prompt">{this.state.message}</p>
                 </div>

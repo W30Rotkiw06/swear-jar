@@ -475,6 +475,16 @@ html{
   font-size: 12px;
 }
 
+.jar-settings{
+  width: 313px;
+  height: 20px;
+  position: relative;
+  top: 49px;
+  border-top: 2px solid #fff;
+  text-align: center;
+}
+
+
 .add-jar-win {
   padding: 20px;
   border: 3px solid;
@@ -620,6 +630,25 @@ html{
   right: 15px;
   height: 24px;
   width: 24px;
+}
+
+.settings-segment-switch{
+  position: absolute;
+  left: 120px;
+  bottom: 44px
+}
+
+.settings-segment-input{
+  text-align: right;
+  position: absolute;
+  top: 2px;
+  right: 14px;
+  height: 20px;
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
 .large-profile-picture{

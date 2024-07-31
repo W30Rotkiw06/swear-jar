@@ -1,33 +1,63 @@
-function SettingSegment(props){
-   var {image, name="settings name", onClick, type="more", isActive=true, color} = props;
-   if (props.isActive === false){props.onClick = null}
+import Switch from 'react-ios-switch';
+import MyInput from './MyInput';
+import { Component } from 'react';
 
-    switch(type){
-        case "more":
-            return(
-                <div className="settings-segment" onClick={onClick}>
-                    <img src={image} alt="img" className="settings-segment-img"/>
-                    <p className="settings-segment-title">{name}</p>
-                    <p className="settings-segment-arrow">➤</p>
-                </div>
-               )
-        case "switch":
-            return(
-                <div className="settings-segment" onClick={onClick}>
-                    <img src={image} alt="img" className="settings-segment-img"/>
-                    <p className="settings-segment-title">{name}</p>
-                </div>
-            )
-        case "color":
-            return(
-                <div onClick={props.onClick} className="settings-segment" >
-                    <img src={image} alt="img" className="settings-segment-img"/>
-                    <p className="settings-segment-title">{name}</p>
-                    <div className="select-color-settings" style={{backgroundColor: color}}/>
-
-                </div>
-            )
+class SettingSegment extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            onClick: this.props.isActive === true? this.props.onClick: null,
+            switchState: this.props.value
+        }
     }
 
+    handleSwitchChange = ()=>{
+        this.props.callback("is_anon", !this.state.switchState)
+        this.setState({switchState: !this.state.switchState});
+    }
+
+    render(){
+        let checked = false;
+        switch(this.props.type){
+            case "more":
+                return(
+                    <div className="settings-segment" onClick={this.props.onClick}>
+                        <img src={this.props.image} alt="img" className="settings-segment-img"/>
+                        <p className="settings-segment-title">{this.props.name}</p>
+                        <p className="settings-segment-arrow">➤</p>
+                    </div>
+                   )
+            case "switch":
+                return(
+                    <div className="settings-segment" onClick={this.props.onClick}>
+                        <img src={this.props.image} alt="img" className="settings-segment-img"/>
+                        <p className="settings-segment-title">{this.props.name}</p>
+                        <Switch className="settings-segment-switch" onChange={this.handleSwitchChange} checked={this.state.switchState}/>
+                    </div>
+                )
+            case "color":
+                return(
+                    <div onClick={this.props.onClick} className="settings-segment" >
+                        <img src={this.props.image} alt="img" className="settings-segment-img"/>
+                        <p className="settings-segment-title">{this.props.name}</p>
+                        <div className="select-color-settings" style={{backgroundColor: this.props.color}}/>
+    
+                    </div>
+                )
+            case "input":
+                return(
+                    <div className="settings-segment" onClick={this.props.onClick}>
+                        <img src={this.props.image} alt="img" className="settings-segment-img"/>
+                        <p className="settings-segment-title">{this.props.name}</p>
+                        <MyInput type='text' label='' value={this.props.value} className='settings-segment-input'  name='price_per_word'/>
+                    </div>
+                   )
+        }
+    
+    }
+
+    
 }
+
+
 export default SettingSegment

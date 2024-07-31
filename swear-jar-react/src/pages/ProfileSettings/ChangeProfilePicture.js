@@ -48,6 +48,7 @@ class ChangeProfilePicture extends Component{
                 cacheControl: '3600',
                 upsert: true
             })
+            console.log(error)
         }else{
             file_name = this.props.email + ".jpg"
             var { data, error } = await this.props.supabase.storage.from('profile_pictures')

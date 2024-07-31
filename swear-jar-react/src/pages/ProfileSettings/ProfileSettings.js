@@ -96,7 +96,7 @@ class ProfileSettings extends Component{
                     <div className='jar_container'>
                         <div style={{width: "350px", textAlign: "left", position: "relative", left: "8px", top: "-15px"}}>
                             <p>
-                                You reported your friends <span style={{color: "#E91C74"}}>{this.state.reported_sb}&nbsp;times,</span> while they reported you <span style={{color: "#E91C74"}}>{this.state.was_reported}&nbsp;times.</span>
+                                You reported your friends <span style={{color: "#E91C74"}}>{this.state.reported_sb}&nbsp;times,</span> while you were reported <span style={{color: "#E91C74"}}>{this.state.was_reported}&nbsp;times.</span>
                             </p>
                         </div>
     

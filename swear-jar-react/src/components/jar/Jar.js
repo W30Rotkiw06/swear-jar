@@ -3,8 +3,9 @@ import JarSimple from "./JarSimple";
 import JarDetails from "./JarDetails";
 
 class Jar extends Component {
-    constructor(props){
+    constructor (props){
         super(props);
+
         this.state = {
             show_details: false,
             members_list: [this.props.email],
@@ -30,7 +31,9 @@ class Jar extends Component {
                 members_formated = members_formated + ", " + member_nickname[0];
             }
         }
+        this.setState({members_formated: members_formated})
 
+        
         for (var member of this.props.jar.members){
             members_list.push(member[0]);
             // download nickname of member, deafult_color and profile picture file name
@@ -55,7 +58,7 @@ class Jar extends Component {
             const profile_picture_url = URL.createObjectURL(profile_picture_blob);
             members_profile_pictures.push(profile_picture_url);
         }
-        this.setState({members_formated: members_formated, members_list: members_list, members_names_list: members_names_list, members_profile_pictures: members_profile_pictures, members_colors: members_colors})
+        this.setState({members_list: members_list, members_names_list: members_names_list, members_profile_pictures: members_profile_pictures, members_colors: members_colors})
     }
 
     showHideDetails = () =>{
