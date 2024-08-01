@@ -16,8 +16,11 @@ class SettingSegment extends Component{
         this.setState({switchState: !this.state.switchState});
     }
 
+    handleInputChange = event=>{
+        this.props.callback("price_per_word", event.target.value)
+    }
+
     render(){
-        let checked = false;
         switch(this.props.type){
             case "more":
                 return(
@@ -49,7 +52,7 @@ class SettingSegment extends Component{
                     <div className="settings-segment" onClick={this.props.onClick}>
                         <img src={this.props.image} alt="img" className="settings-segment-img"/>
                         <p className="settings-segment-title">{this.props.name}</p>
-                        <MyInput type='text' label='' value={this.props.value} className='settings-segment-input'  name='price_per_word'/>
+                        <MyInput type='text' label='' value={this.props.value} onChange={this.handleInputChange} className='settings-segment-input'  name='price_per_word'/>
                     </div>
                    )
         }

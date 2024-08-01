@@ -14,6 +14,7 @@ class Home extends Component{
             message: "Loading content...",
             deafult_color: "",
             add_new_jar_window: false,
+            subscription: null
         }
     }
 
@@ -44,30 +45,42 @@ class Home extends Component{
         this.setState({name: name[0],email: this.props.email,profile_picture: profile_picture_url, color: color});
         this.props.fun("name", name[0])
         this.props.fun("profile_picture", profile_picture_url)
-      }
 
+        // creating subscription that will update jars
+        await this.updateJars();
 
-    componentDidUpdate = async() =>{ // downloading jars
-        let jars_with_user = []
+        this.props.supabase.channel('room1').on('postgres_changes', { event: '*', schema: 'public', table: 'jars' }, payload => {
+        console.log('Change received!', payload)
+        this.updateJars()
+        }).subscribe()
+    }
+
+    componentWillUnmount = async ()=>{
+        this.props.supabase.removeAllChannels()
+    }
+
+    updateJars = async() =>{
+        let jars_with_user = [];
         let jar_list = (await this.props.supabase.from("jars").select().order('id', {ascending: true })).data
         for (let jar of jar_list){
             for (let member of jar["members"]){
                 if (member[0] === this.state.email){
-                    jars_with_user.push(jar)
+                    jars_with_user.push(jar);
                 }
             }
         }
         let message = jars_with_user.length === 0? "You don't have any opened swear jars yet": "";
-        this.setState({avalaible_jars: jars_with_user, message: message})
+        this.setState({avalaible_jars: jars_with_user, message: message});
     }
 
+
     openCloseAddJarWin = () =>{
-        this.setState({add_new_jar_window: !this.state.add_new_jar_window})
+        this.setState({add_new_jar_window: !this.state.add_new_jar_window});
     }
 
     openProfileSettings = () => {
         this.props.fun("page","profile-settings");
-        this.props.fun("previous", "home")
+        this.props.fun("previous", "home");
     }
 
 // this.state.books.map((book, i) => (<BookDescription key = {i} book={book} deleteBook={this.deleteBook}/>))

@@ -101,11 +101,11 @@ class ProfileSettings extends Component{
                         </div>
     
                         <div style={{position: "relative", left: "20px"}} className="settings">
-                            <SettingSegment image={this.props.profile_picture} name="Change profile picture" onClick={this.chooseProfilePicture}/>
+                            <SettingSegment image={this.props.profile_picture} name="Change profile picture" type="more" onClick={this.chooseProfilePicture}/>
                             <SettingSegment image={this.props.profile_picture} name="Change your color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
-                            <SettingSegment image={this.props.profile_picture} name="Change name" onClick={this.changeName}/>
-                            <SettingSegment image={this.props.profile_picture} name="Change email" onClick={this.changeEmail}/>
-                            <SettingSegment image={this.props.profile_picture} name="Change password" onClick={this.changePassword}/>
+                            <SettingSegment image={this.props.profile_picture} name="Change name" type="more" onClick={this.changeName}/>
+                            <SettingSegment image={this.props.profile_picture} name="Change email" type="more" onClick={this.changeEmail}/>
+                            <SettingSegment image={this.props.profile_picture} name="Change password" type="more" onClick={this.changePassword}/>
                         </div>
 
                         
