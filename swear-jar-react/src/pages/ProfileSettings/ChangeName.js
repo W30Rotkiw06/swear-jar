@@ -42,17 +42,19 @@ class ChangeName extends Component{
                 </div>
 
                 <div className='jar_container'>
+                <div style={{position: "relative", left: "5px"}}>
                 <MyInput
-                type="text"
-                name="name"
-                label="Enter your name"
-                className="standard-input-small change-profile-data"
-                addClassName="change-profile-data-lbl"
-                addClassNameMsg="change-profile-data-lbl-error"
-                autoFocus={true}
-                onChange={this.checkName}/>
-
+                    type="text"
+                    name="name"
+                    label="Enter your name"
+                    className="standard-input-small right-input3"
+                    autoFocus={true}
+                    onChange={this.checkName}/>
+                </div>
+                    
+                <div style={{position: "relative", top: "50px"}}>
                 <MyButton className="standard-button" displayedText="SAVE CHANGES" name="name" isDisabled={!this.state.button_isactive} onClick={this.saveChanges}/>
+                </div>
                 </div>
             </div>
         )

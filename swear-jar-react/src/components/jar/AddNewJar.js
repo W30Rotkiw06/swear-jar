@@ -37,7 +37,7 @@ class AddNewJar extends Component{
     }
 
     handleColorChange = (color) => {
-        this.setState({ jar_color: color.hex });
+        this.setState({ jar_color: color.hex, show_pallete: false });
       };
 
 
@@ -55,21 +55,22 @@ class AddNewJar extends Component{
         return(
             <div>
                 <div style={{borderColor: this.state.jar_color}} className="add-jar-win">
-            <h2 style={{color: "#fff", position: "absolute", top: "-15px", left: "60px"}}>Add new jar</h2>
+            <h2 style={{color: "#fff", position: "absolute", top: "-13px", left: "60px"}}>Add new jar</h2>
             <div onClick={this.props.closeWin} className="jar-close-button">×</div>
-            <MyInput
-                type="text"
-                name="jar_name"
-                label="Jar name"
-                className="standard-input-small jar-input"
-                addClassName="add-jar-label"
-                addClassNameMsg="add-jar-error"
-                value={this.state.jar_name}
-                onChange={this.checkName} 
-                autoFocus={true}
-                
-                additionalInfo={this.state.jar_msg}/>
-
+            <div style={{position: "relative", left: "27px"}}>
+                <MyInput
+                    type="text"
+                    name="jar_name"
+                    label="Jar name"
+                    className="standard-input-small right-input2"
+                    value={this.state.jar_name}
+                    onChange={this.checkName} 
+                    autoFocus={true}
+                    
+                    additionalInfo={this.state.jar_msg}/>
+            </div>
+            
+                <br/>
                 <div className="color-button">
                 <p>Select color:</p>
                 <div onClick={this.showHidePallete} style={{width: "30px", height: "30px", backgroundColor: this.state.jar_color, position: "relative", left: "44px", borderRadius: "5px", cursor: "pointer"}}/>
@@ -78,9 +79,9 @@ class AddNewJar extends Component{
                     <div>
                     <TwitterPicker onChange={this.handleColorChange} className="color-pallete" triangle="top-right" width="205px"/>
                     </div>
-                    ): <button disabled={!this.state.button_isactive} onClick={this.createJar} style={{backgroundColor: this.state.jar_color, borderColor: this.state.jar_color}} name="create-jar" className="standard-button button-add-jar">CREATE JAR</button>
+                    ): <button disabled={!this.state.button_isactive} onClick={this.createJar} style={{backgroundColor: this.state.jar_color, borderColor: this.state.jar_color, position: "relative", top: "-3px"}} name="create-jar" className="standard-button button-add-jar">CREATE JAR</button>
                 }
-                <div style={{width: "30px", height: "30px", color: "blue    "}}/>
+                <div style={{width: "30px", height: "30px", color: "blue"}}/>
                 </div>
                 </div>
         )

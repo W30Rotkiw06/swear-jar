@@ -135,12 +135,11 @@ class CreateAccount extends Component{
           </p>
             <MyInput type="text"
                     name="name"
-                    className="standard-input-small"
+                    className="standard-input-small right-input"
                     value={this.state.name}
                     onChange={this.checkName} 
                     label="Enter your name"
                     autoFocus={true}/>
-                <br/>
                 <MyInput type="text"
                     name="email"
                     className="standard-input"
@@ -149,7 +148,6 @@ class CreateAccount extends Component{
                     label="Enter your email"
                     autoFocus={false}
                     additionalInfo={this.state.email_comment}/>
-                <br/>
                 <MyInput type="password"
                     name="password"
                     className="standard-input"
@@ -157,7 +155,6 @@ class CreateAccount extends Component{
                     onChange={this.checkPasswords}
                     label="Enter your password"
                     additionalInfo={this.state.password_comment}/>
-                <br/>
                 <MyInput type="password"
                     name="password2"
                     className="standard-input"

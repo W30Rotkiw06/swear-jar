@@ -136,7 +136,7 @@ class ChangePassword extends Component{
             </div>
 
             <div style={{position: "relative", bottom: "40px"}} className='jar_container'>
-            <div className="input-border">
+            <div>
                 <MyInput type="password"
                     name="old_password"
                     className="standard-input"
@@ -146,8 +146,7 @@ class ChangePassword extends Component{
                     autoFocus={true}
                     additionalInfo={this.state.old_password_error}/>
             </div>
-
-            <div className="input-border">
+            <div>
                 <MyInput type="password"
                     name="password"
                     className="standard-input"
@@ -158,7 +157,7 @@ class ChangePassword extends Component{
                     additionalInfo={this.state.password_error}/>
             </div>
 
-            <div className="input-border">
+            <div>
                 <MyInput type="password"
                     name="password2"
                     className="standard-input"

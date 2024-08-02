@@ -97,7 +97,6 @@ class Login extends Component{
                     label="Enter your mail"
                     autoFocus={true}
                     additionalInfo={this.state.email_comment}/>
-                <br/>
                 <MyInput type="password"
                     name="password"
                     className="standard-input"

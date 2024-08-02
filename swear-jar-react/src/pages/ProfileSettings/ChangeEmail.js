@@ -73,7 +73,7 @@ class ChangeEmail extends Component{
             </div>
 
             <div style={{position: "relative", bottom: "40px"}} className='jar_container'>
-            <div className="input-border">
+            <div>
                 <MyInput type="text"
                     name="email"
                     className="standard-input"
