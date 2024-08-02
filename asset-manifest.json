@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/swear-jar/static/css/main.ce4958c2.css",
-    "main.js": "/swear-jar/static/js/main.4732310e.js",
+    "main.css": "/swear-jar/static/css/main.96bb300a.css",
+    "main.js": "/swear-jar/static/js/main.6204e3ed.js",
     "static/js/952.fde1f850.chunk.js": "/swear-jar/static/js/952.fde1f850.chunk.js",
     "static/js/453.787c9c15.chunk.js": "/swear-jar/static/js/453.787c9c15.chunk.js",
     "static/media/main icon.png": "/swear-jar/static/media/main icon.37981b47af9744813ab3.png",
     "static/media/lama with money.jpeg": "/swear-jar/static/media/lama with money.6eaaadc0d4b3f15b0163.jpeg",
     "static/media/lama incognito.jpeg": "/swear-jar/static/media/lama incognito.e7dc54d518180a2e3152.jpeg",
     "index.html": "/swear-jar/index.html",
-    "main.ce4958c2.css.map": "/swear-jar/static/css/main.ce4958c2.css.map",
-    "main.4732310e.js.map": "/swear-jar/static/js/main.4732310e.js.map",
+    "main.96bb300a.css.map": "/swear-jar/static/css/main.96bb300a.css.map",
+    "main.6204e3ed.js.map": "/swear-jar/static/js/main.6204e3ed.js.map",
     "952.fde1f850.chunk.js.map": "/swear-jar/static/js/952.fde1f850.chunk.js.map",
     "453.787c9c15.chunk.js.map": "/swear-jar/static/js/453.787c9c15.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce4958c2.css",
-    "static/js/main.4732310e.js"
+    "static/css/main.96bb300a.css",
+    "static/js/main.6204e3ed.js"
   ]
 }
