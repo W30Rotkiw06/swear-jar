@@ -22,7 +22,7 @@ html{
   height: 15%;
   pointer-events: none;
   position: absolute;
-  top: 180px;
+  top: 170px;
   transform: translate(-50%, -50%); /* relative to element's height & width */
 }
 
@@ -342,14 +342,24 @@ html{
 .jar-settings-logo{
   position: absolute;
   top: 10px;
-  right: 35px;
+  right: 15px;
   height: 30px;
   width: 30px ;
   cursor: pointer;
 }
+
+.jar-kick-logo{
+  position: absolute;
+  top: 10px;
+  right: 55px;
+  height: 30px;
+  width: 30px ;
+  cursor: pointer;
+}
+
 @media(prefers-reduced-motion: no-preference){
-  .jar-settings-logo:hover{
-    animation: Settings-spin infinite 5s linear;
+  .jar-settings-logo{
+    animation: Settings-spin infinite 30s linear;
   }
 }
 
@@ -415,11 +425,12 @@ html{
   font-size: 10px;
   font-weight: 600;
   width: 54px;
-  margin: 4px;
+  margin: 2px;
   height: 80px;
   cursor: pointer;
   text-align: center;
   justify-content: center;
+  position: relative;
 }
 
 
@@ -434,6 +445,13 @@ html{
   border-radius: 27px;
   position: relative;
   top: 10px;
+}
+
+.jar-report-member-badge{
+  position: absolute;
+  width: 15px;
+  right: 0px;
+  bottom: 16px;
 }
 
 
@@ -493,6 +511,13 @@ html{
   top: 49px;
   border-top: 2px solid #fff;
   text-align: center;
+}
+
+.color-pallete-jar{
+  position: absolute;
+  top: 13px;
+  left: 25px;
+  z-index: 10;
 }
 
 

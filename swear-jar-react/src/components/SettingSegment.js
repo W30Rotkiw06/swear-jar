@@ -7,7 +7,7 @@ class SettingSegment extends Component{
         super(props)
         this.state = {
             onClick: this.props.isActive === true? this.props.onClick: null,
-            switchState: this.props.value
+            switchState: this.props.value,
         }
     }
 
@@ -24,7 +24,7 @@ class SettingSegment extends Component{
         switch(this.props.type){
             case "more":
                 return(
-                    <div className="settings-segment" onClick={this.props.onClick}>
+                    <div disabled={this.props.isActive} className="settings-segment" onClick={this.props.onClick}>
                         <img src={this.props.image} alt="img" className="settings-segment-img"/>
                         <p className="settings-segment-title">{this.props.name}</p>
                         <p className="settings-segment-arrow">➤</p>
@@ -43,7 +43,7 @@ class SettingSegment extends Component{
                     <div onClick={this.props.onClick} className="settings-segment" >
                         <img src={this.props.image} alt="img" className="settings-segment-img"/>
                         <p className="settings-segment-title">{this.props.name}</p>
-                        <div className="select-color-settings" style={{backgroundColor: this.props.color}}/>
+                        <div className="select-color-settings" style={{backgroundColor: this.props.color, border: "1px solid", borderColor: "#000"}}/>
     
                     </div>
                 )

@@ -11,25 +11,33 @@ class Report extends Component{
     }
 
     reportMe = async(i) =>{
-        // adding x money to chosen member bill
         let bill = this.props.jar.members
-
-        console.log(bill[i][0], i)
+        if (this.props.kickPeople){
+            if (window.confirm("Do you want to delete "+ this.props.members_names_list[i] + "?")){
+                bill.splice(i, 1);
+                await this.props.supabase.from('jars').update({members: bill}).eq("id", this.props.jar.id);
+                this.props.update();
+            }
+            
+        }else{
+        
+        // adding x money to chosen member bill
         bill[i][1] =  bill[i][1] + this.props.jar.price_per_word 
-        const msg = this.props.members_names_list[i] + " added $" + this.props.jar.price_per_word + " to " + this.props.jar.name + " jar."
-        alert(msg)
-        await this.props.supabase.from('jars').update({members: bill, total_money: this.props.jar.total_money + this.props.jar.price_per_word}).eq("name", this.props.jar.name)
+        const msg = "Are you sure to report " + this.props.members_names_list[i] + "?";
+        if (window.confirm(msg)){
+            await this.props.supabase.from('jars').update({members: bill, total_money: this.props.jar.total_money + this.props.jar.price_per_word}).eq("id", this.props.jar.id)
+            // downolading and updating data of reported user
+            var {data} = await this.props.supabase.from("users").select().eq("user_mail", bill[i][0])
+            let reported_user = data.map(item => item.was_reported)[0]
+            await this.props.supabase.from("users").update({"was_reported": reported_user + 1}).eq("user_mail", bill[i][0])
+            
+            // downloading and updating data of reporting user
+            var {data} = await this.props.supabase.from("users").select().eq("user_mail", this.props.email)
+            let reporting_user = data.map(item => item.reported_someone)[0]
+            await this.props.supabase.from("users").update({"reported_someone": reporting_user + 1}).eq("user_mail",this.props.email)
+        }else{}
         
-        // downolading and updating data of reported user
-        var {data, error} = await this.props.supabase.from("users").select().eq("user_mail", bill[i][0])
-        let reported_user = data.map(item => item.was_reported)[0]
-        var {error} = await this.props.supabase.from("users").update({"was_reported": reported_user + 1}).eq("user_mail", bill[i][0])
-        
-        // downloading and updating data of reporting user
-        var {data, error} = await this.props.supabase.from("users").select().eq("user_mail", this.props.email)
-        let reporting_user = data.map(item => item.reported_someone)[0]
-        var {error} = await this.props.supabase.from("users").update({"reported_someone": reporting_user + 1}).eq("user_mail",this.props.email)
-        
+        }
         this.setState()
 
     }
@@ -37,7 +45,7 @@ class Report extends Component{
         return(
             <div className="jar-report">
                 <hr className="jar-header-line"/>
-                <p className="jar-highlit">Who said naughty word?</p>
+                <p className="jar-highlit">{this.props.header}</p>
                 <div className="jar-report-member-choose">
                 {
                     this.props.members_list.map((person, i) =>
@@ -47,8 +55,10 @@ class Report extends Component{
                             email={person}
                             nickname={this.props.members_names_list[i]}
                             profile_picture={this.props.members_profile_pictures[i]}
+                            premium={this.props.members_premium[i]}
                             size={this.state.size}
                             color={this.props.members_colors[i]}
+                            kickPeople={this.props.kickPeople}
                             session={this.props.session}
                             supabase={this.props.supabase}/>))
                 }

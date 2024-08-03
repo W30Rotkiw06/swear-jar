@@ -1,4 +1,5 @@
 import { Component } from "react"
+import premium_logo from "../../assets/premium badge.png"
 
 class ReportedMember extends Component{ // można przepisać na funckcję
     constructor(props){
@@ -20,13 +21,17 @@ class ReportedMember extends Component{ // można przepisać na funckcję
     }
 
     render(){
-        return(
+        if (this.props.id ==0 && this.props.kickPeople){}
+        else{return(
             <div className={this.state.div_class} onClick={this.reportSelf}>
                 <img style={{border: "2px solid", borderColor: this.props.color}} className={this.state.img_class} src={this.props.profile_picture} alt=""/> 
                 <p>{this.props.nickname}</p>
+                {
+                    this.props.premium ? <img className="jar-report-member-badge" src={premium_logo} alt=""/> : <></>
+                }
             </div>
         )
-    }
+    }}
     
 }
 export default ReportedMember

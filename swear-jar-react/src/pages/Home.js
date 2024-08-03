@@ -49,7 +49,7 @@ class Home extends Component{
         // creating subscription that will update jars
         await this.updateJars();
 
-        this.props.supabase.channel('room1').on('postgres_changes', { event: '*', schema: 'public', table: 'jars' }, payload => {
+        this.props.supabase.channel(this.props.email).on('postgres_changes', { event: '*', schema: 'public', table: 'jars' }, payload => {
         console.log('Change received!', payload)
         this.updateJars()
         }).subscribe()
