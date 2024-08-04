@@ -15,9 +15,9 @@ const  MyInput = props =>{
     );
 }
 MyInput.propTypes = {
-    label: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    type: PropTypes.string,
     value: PropTypes.string,
     className: PropTypes.string,
     onChange: PropTypes.func,

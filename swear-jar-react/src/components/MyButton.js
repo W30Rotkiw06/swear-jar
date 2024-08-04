@@ -7,9 +7,9 @@ const MyButton= props =>{
     )
 }
 MyButton.propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     onClick: PropTypes.func,
-    className: PropTypes.string.isRequired,
+    className: PropTypes.string,
     displayedText: PropTypes.string,
     isDisabled: PropTypes.bool,
 }

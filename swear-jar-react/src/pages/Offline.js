@@ -1,14 +1,12 @@
 import BigLogo from "../components/BigLogo";
 import MyButton from "../components/MyButton";
-
+import lama_offline from "../assets/lama offline.jpg"
 const Offline = props =>{
    const {retryConnection} = props;
    return( //placeholder ten obrazek
     <div>
-    <BigLogo/>
+    <img src={lama_offline} alt="" style={{width: "400px", borderRadius: "40px", position: 'relative', bottom: "50px"}}/>
     <div className="">
-    <h1>You are offline</h1>
-
       <MyButton name="retry" className="standard-button-dark" displayedText="TRY AGAIN" onClick={retryConnection}/>  
     
   </div></div>

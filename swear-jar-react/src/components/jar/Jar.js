@@ -16,6 +16,8 @@ class Jar extends Component {
             members_profile_pictures: [this.props.profile_picture],
             members_formated: "Loading content...",
             jar_height: "80",
+            user_as_member_id: null,
+            is_suspended: null,
 
         }
     }
@@ -29,18 +31,19 @@ class Jar extends Component {
         let members_formated = "You";
         let members_list = [], members_names_list = []
         let members_profile_pictures = [];
-        let members_colors = []
-        let members_premium = []
+        let members_colors = [];
+        let members_premium = [];
+        let i=0;
 
         for (var member of this.props.jar.members){
             if (member[0] !== this.props.email){
                 let member_data = (await this.props.supabase.from("users").select().eq("user_mail", member[0])).data
                 let member_nickname = member_data.map(item => item.user_nickname);   
                 members_formated = members_formated + ", " + member_nickname[0];
-            }
+            }else{this.setState({user_as_member_id: i, is_suspended: this.props.jar.members[i][2]})}
+            i += 1;
         }
         this.setState({members_formated: members_formated})
-
         
         for (var member of this.props.jar.members){
             members_list.push(member[0]);

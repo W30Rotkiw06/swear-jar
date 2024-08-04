@@ -64,6 +64,14 @@ html{
   color: rgba(111, 211, 136, 0.75);
 }
 
+.mini-button{
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
 .standard-button{
   background-color: #6FD39C;
@@ -341,25 +349,25 @@ html{
 
 .jar-settings-logo{
   position: absolute;
-  top: 10px;
-  right: 15px;
-  height: 30px;
-  width: 30px ;
+  top: 5px;
+  right: 10px;
+  height: 40px;
+  width: 40px ;
   cursor: pointer;
 }
 
 .jar-kick-logo{
   position: absolute;
-  top: 10px;
+  top: 5px;
   right: 55px;
-  height: 30px;
-  width: 30px ;
+  height: 40px;
+  width: 40px ;
   cursor: pointer;
 }
 
 @media(prefers-reduced-motion: no-preference){
   .jar-settings-logo{
-    animation: Settings-spin infinite 30s linear;
+    animation: Settings-spin infinite 10s linear;
   }
 }
 
@@ -410,6 +418,22 @@ html{
   font-weight: 600;
 }
 
+.suspend-or-remove-menu{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 40px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.suspend-or-remove-switch{
+  position: absolute;
+  top: 5px;
+  margin: 5px;
+}
+
+
 .jar-report-member-choose{
   display: flex;
   text-align: center;
@@ -453,6 +477,14 @@ html{
   right: 0px;
   bottom: 16px;
 }
+
+.jar-report-member-suspended{
+  position: absolute;
+  width: 20px;
+  right: 0px;
+  bottom: 16px;
+}
+
 
 
 .jar-report-member-view-small{
@@ -613,8 +645,29 @@ html{
   color: #E91C74;
   border-color: #E91C74;
   position: relative;
-  bottom: -80px;
+  bottom: -50px;
+  cursor: pointer;
 }
+
+.red-delete-button{
+  background-color: #E91C74;
+  border: 1px solid #000;
+  color: #000;
+  position: relative;
+  bottom: -30px;
+  cursor: pointer;
+}
+
+.green-save-button{
+  background-color: #6FD39C;
+  border: 1px solid #000;
+  color: #000;
+  position: relative;
+  bottom: -30px;
+  cursor: pointer;
+}
+
+
 
 .settings{
   width: 313px;
@@ -648,7 +701,7 @@ html{
 }
 
 .settings-segment:hover{
-  color: #c7baba
+  color: rgb(44, 44, 44)
 }
 
 .settings-segment-title{
@@ -675,9 +728,9 @@ html{
 }
 
 .settings-segment-input{
-  text-align: right;
+  text-align: left;
   position: absolute;
-  top: -41px;
+  top: 2px;
   right: 14px;
   height: 20px;
   width: 40px;
@@ -686,6 +739,20 @@ html{
   border: 1px solid #000;
   border-radius: 5px;
 }
+
+.settings-segment-input-long{
+  text-align: right;
+  position: absolute;
+  top: -41px;
+  right: 14px;
+  height: 20px;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
 
 .large-profile-picture{
   width: 200px;

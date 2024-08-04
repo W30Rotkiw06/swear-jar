@@ -1,5 +1,6 @@
 import { Component } from "react";
 import ReportedMember from "./ReportedMember";
+import Switch from 'react-ios-switch';
 
 class Report extends Component{
     constructor(props){
@@ -7,17 +8,29 @@ class Report extends Component{
         let size = this.props.members_list.length > 5? "-small": ""
         this.state = {
             size: size,
+            sus_color: "green",
+            rem_color: "red",
+            switch_state: this.props.suspend_remove,
         }
+
     }
 
     reportMe = async(i) =>{
+        if (!this.props.is_suspended || this.props.members_list[i] === this.props.email){
         let bill = this.props.jar.members
-        if (this.props.kickPeople){
-            if (window.confirm("Do you want to delete "+ this.props.members_names_list[i] + "?")){
-                bill.splice(i, 1);
-                await this.props.supabase.from('jars').update({members: bill}).eq("id", this.props.jar.id);
-                this.props.update();
+        if (this.props.manage_members){
+            if (this.props.suspend_remove){ //remove people
+                if (window.confirm("Do you want to delete "+ this.props.members_names_list[i] + "?")){
+                    bill.splice(i, 1);
+                }
+            }else{
+                let msg = bill[i][2]? "Do you want to remove " + this.props.members_names_list[i] +"'s suspention" : "Do you want to suspend "+ this.props.members_names_list[i] + "? "+ this.props.members_names_list[i] + " won't be able to report members of this jar.";
+                if (window.confirm(msg)){
+                    bill[i][2] = !bill[i][2];
+                }
             }
+            await this.props.supabase.from('jars').update({members: bill}).eq("id", this.props.jar.id);
+            
             
         }else{
         
@@ -39,7 +52,14 @@ class Report extends Component{
         
         }
         this.setState()
+        }else{window.alert("You are suspended. You can't report other users")}
 
+    }
+
+    handleSwitch = () =>{
+        let color1 = this.state.sus_color, color2 = this.state.rem_color;
+        this.props.callback("suspend_remove", !this.state.switch_state)
+        this.setState({switch_state: !this.state.switch_state, sus_color: color2, rem_color: color1})
     }
     render(){
         return(
@@ -58,11 +78,23 @@ class Report extends Component{
                             premium={this.props.members_premium[i]}
                             size={this.state.size}
                             color={this.props.members_colors[i]}
-                            kickPeople={this.props.kickPeople}
+                            manage_members={this.props.manage_members}
+                            suspended={this.props.jar.members[i][2]}
                             session={this.props.session}
                             supabase={this.props.supabase}/>))
                 }
-            </div></div>  
+            </div>
+            {
+                this.props.manage_members?
+                <div className="suspend-or-remove-menu" >
+                <p style={{color: this.state.sus_color}}>suspend</p>
+                <Switch className="suspend-or-remove-switch" onChange={this.handleSwitch} checked={this.state.switch_state}/>
+                <p style={{color: this.state.rem_color}}>remove</p>
+            </div>: <></>
+            }
+            
+            
+            </div>  
         )
     }
 }

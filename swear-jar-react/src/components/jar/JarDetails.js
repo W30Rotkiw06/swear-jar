@@ -2,6 +2,7 @@ import settings_logo from "../../assets/settings.png"
 import Report from "./Report";
 import Chart from "./Chart";
 import JarSettings from "./JarSettings";
+import LeaveJar from "./LeaveJar";
 import { Component } from "react";
 
 class JarDetails  extends Component{
@@ -12,38 +13,50 @@ class JarDetails  extends Component{
             jar_name_class: jar_name_class,
             show_settings: false,
             head_message: "Who said naughty word?",
-            kick_people: false,
+            deafult_message: "Who said naughty word?",
+            manage_members: false,
+            suspend_remove: false, // suspend-false, remove-true
         };
     }
 
     componentDidMount = () =>{
         let height = this.props.jar.total_money === 0? 180: 480;
         this.props.changeHeight(height);
+        if (this.props.is_suspended){this.setState({head_message: "You are suspended"})}
     }
 
     componentDidUpdate = ()=>{
         let height
-        if (this.state.show_settings === true){height = 220}
+        if (this.state.show_settings === true){height = 320}
         else{
-        if (this.props.jar.total_money === 0 || this.props.jar.is_anon || this.state.kick_people){
-            height = 180;
-        }else{height = 480}
+        if (this.props.jar.total_money === 0 || (this.props.jar.is_anon && !this.props.admin) || this.state.manage_members){
+            height = 205;
+        }else{height = 460}
         }
         if (this.props.jar_height !== height){
         this.props.changeHeight(height);}
     }
 
     showHideSettings = () =>{
-        if (this.props.admin){this.setState({show_settings: !this.state.show_settings})}
+        if (this.props.admin){this.setState({show_settings: !this.state.show_settings, manage_members: false, head_message: this.state.deafult_message})}
     }
 
     showHideKickPeople = () =>{
         if (this.props.admin){
-            let msg = this.state.kick_people ===false? "Select person to remove" : "Who said naughty word?"
-            this.setState({kick_people: !this.state.kick_people, head_message: msg})
+            let add_msg = !this.state.suspend_remove? "suspend": "remove";
+            let msg = this.state.manage_members ===false? "Select person to " + add_msg: this.state.deafult_message
+            this.setState({manage_members: !this.state.manage_members, head_message: msg})
         }
     }
+
+    changeStateCallack = (state_name, state_value)=>{
+        let add_msg = this.state.suspend_remove? "suspend": "remove";
+
+        this.setState({[state_name]: state_value, head_message: "Select person to " + add_msg})
+
+    }
     
+
     
     render(){
         return(
@@ -65,12 +78,14 @@ class JarDetails  extends Component{
                     <JarSettings {...this.props}/>
                     :
                     <div>
-                        <Report {...this.props} header={this.state.head_message} kickPeople={this.state.kick_people}/>
+                        <Report {...this.props} {...this.state} header={this.state.head_message} manage_members={this.state.manage_members} callback={this.changeStateCallack}/>
                         {
-                            this.props.jar.total_money === 0 || this.props.jar.is_anon || this.state.kick_people? <></>: <Chart {...this.props}/>
+                            this.props.jar.total_money === 0 || (this.props.jar.is_anon && !this.props.admin) || this.state.manage_members? <></>: <Chart {...this.props}/>
                         }
+                        {this.state.manage_members || this.props.admin? <></>: <LeaveJar {...this.props}/>}
                     </div>
                 }
+                
 
                 
             </div>     

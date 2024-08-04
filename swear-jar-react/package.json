@@ -1,6 +1,6 @@
 {
-  "name": "swear-jar-react",
-  "version": "0.8.3",
+  "name": "swear-jar",
+  "version": "0.8.4",
   "private": true,
   "homepage": "https://w30rotkiw06.github.io/swear-jar",
   "dependencies": {

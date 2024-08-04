@@ -19,6 +19,9 @@ class SettingSegment extends Component{
     handleInputChange = event=>{
         this.props.callback("price_per_word", event.target.value)
     }
+    handleLongInputChange = event =>{
+        this.props.callback("name", event.target.value)
+    }
 
     render(){
         switch(this.props.type){
@@ -52,7 +55,15 @@ class SettingSegment extends Component{
                     <div className="settings-segment" onClick={this.props.onClick}>
                         <img src={this.props.image} alt="img" className="settings-segment-img"/>
                         <p className="settings-segment-title">{this.props.name}</p>
-                        <MyInput type='text' label='' value={this.props.value} onChange={this.handleInputChange} className='settings-segment-input'  name='price_per_word'/>
+                        <input type='number' min="1" max="10" value={this.props.value} onChange={this.handleInputChange} className='settings-segment-input'  name='price_per_word'/>
+                    </div>
+                   )
+            case "input-long":
+                return(
+                    <div className="settings-segment" onClick={this.props.onClick}>
+                        <img src={this.props.image} alt="img" className="settings-segment-img"/>
+                        <p className="settings-segment-title">{this.props.name}</p>
+                        <MyInput type='text' label='' value={this.props.value} onChange={this.handleLongInputChange} className='settings-segment-input-long'  name='price_per_word'/>
                     </div>
                    )
         }
