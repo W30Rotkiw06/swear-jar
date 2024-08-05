@@ -71,7 +71,7 @@ class ProfileSettings extends Component{
 
     handleColorChange = async(color) => {
         var {error} = await this.props.supabase.from("users").update({deafult_color: color.hex}).eq("user_mail", this.props.email)
-        this.setState({ color: color.hex, color_pallete: false });
+        this.setState({ color: color.hex});
       };
 
 

@@ -37,7 +37,7 @@ class AddNewJar extends Component{
     }
 
     handleColorChange = (color) => {
-        this.setState({ jar_color: color.hex, show_pallete: false });
+        this.setState({ jar_color: color.hex});
       };
 
 

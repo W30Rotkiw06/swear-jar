@@ -11,6 +11,7 @@ class LeaveJar extends Component{
         if (window.confirm("Do you want to leave " + this.props.jar.name + "?")){
             members.splice(this.props.user_as_member_id, 1);
             await this.props.supabase.from('jars').update({members: members}).eq("id", this.props.jar.id);
+            this.props.close()
             this.props.update();
         }
     }

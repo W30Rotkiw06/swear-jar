@@ -290,22 +290,6 @@ html{
   cursor: default;
   transition: height 0.5s;
 }
-/* colors of jars*/
-.yellow{
-  background-color: #FCF10F
-}
-
-.lime{
-  background-color: #CFE616;
-}
-
-.green{
-  background-color: #6FD39C;
-}
-
-.pink{
-  background-color: #FF60D4;
-}
 
 /* details of jar */
 
@@ -442,7 +426,23 @@ html{
   align-self: center;
   position: absolute;
   justify-content: center;
-  top: 40px;
+  top: 20px;
+  height: 120px;
+  margin-left: 0px;
+}
+
+.jar-report-member-choose-small{
+  display: flex;
+  text-align: center;
+  width: 313px;
+  align-items: center;
+  align-self: center;
+  position: absolute;
+  justify-content: left;
+  top: 18px;
+  overflow-x: scroll;
+  height: 128px;
+  margin-left: 0px;
 }
 
 .jar-report-member-view{
@@ -487,27 +487,6 @@ html{
 
 
 
-.jar-report-member-view-small{
-  font-size: 8px;
-  font-weight: 600;
-  margin: 3px;
-  height: 80px;
-}
-
-
-.jar-report-member-view-small:hover{
-  background-color: 1px solid rgba(111, 211, 136, 1);
-  color: rgb(31, 30, 68);
-}
-
-.jar-report-member-picture-small{
-  width: 34px;
-  height: 34px;
-  border-radius: 17px;
-  position: relative;
-  top: 10px;
-}
-
 .chart{
   position: absolute;
   top: 170px;
@@ -547,7 +526,7 @@ html{
 
 .color-pallete-jar{
   position: absolute;
-  top: 13px;
+  top: -16px;
   left: 25px;
   z-index: 10;
 }
@@ -654,7 +633,7 @@ html{
   border: 1px solid #000;
   color: #000;
   position: relative;
-  bottom: -30px;
+  bottom: -10px;
   cursor: pointer;
 }
 
@@ -663,7 +642,7 @@ html{
   border: 1px solid #000;
   color: #000;
   position: relative;
-  bottom: -30px;
+  bottom: -10px;
   cursor: pointer;
 }
 
@@ -802,4 +781,87 @@ html{
 
 .input-border{
   margin-bottom: 30px;
+}
+
+
+ /*Add new members  */
+
+ .user-search{
+  position: relative;
+  bottom: 20px;
+ }
+
+ .user-search-input{
+  font-size: 16px;
+  width: 220px;
+  height: 20px;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #000;
+  border-radius: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-right: 5px;
+}
+.user-search-button{
+  height: 20px;
+  width: 30px;
+  border: 1px solid #000;
+  background-color: #5cb182;
+  border: 1px solid #000;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-right: 5px;
+  position: relative;
+  text-align: center;
+}
+.nothing-found{
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  bottom: 10px;
+}
+.search-results{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+}
+
+.search-result{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: white;
+  width: 273px;
+  height: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  border-radius: 25px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.search-result-image{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px
+}
+
+.search-result-name{
+  position: absolute;
+  bottom: -2px;
+  left: 55px;
+  font-size: 28px;
+}
+
+.search-result-email{
+  position: absolute;
+  bottom: -10px;
+  left: 55px;
+  font-size: 16px;
+  color: #363333;
 }

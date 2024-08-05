@@ -5,6 +5,7 @@ import price_icon from "../../assets/lama with money.jpeg"
 
 import { TwitterPicker } from "react-color";
 import MyButton from "../MyButton"
+import UserSearch from "./UserSearch";
 
 
 class JarSettings extends Component{
@@ -17,6 +18,7 @@ class JarSettings extends Component{
             show_pallete: false,
             name: this.props.jar.name,
             save_button: false,
+            add_people: false,
         }
     }
 
@@ -31,7 +33,7 @@ class JarSettings extends Component{
     }
 
     handleColorChange = async(color) => {
-        this.setState({ color: color.hex, show_pallete: false, save_button: true});
+        this.setState({ color: color.hex, save_button: true});
     };
     
     saveChanges = async()=>{
@@ -43,7 +45,7 @@ class JarSettings extends Component{
 
         }).eq("id", this.props.jar.id)
         if (!error){
-            this.setState({save_button: false})
+            this.setState({save_button: false, show_pallete: false})
         }
     }
 
@@ -54,30 +56,46 @@ class JarSettings extends Component{
         
     }
 
+    addPeople = ()=>{
+        this.setState({add_people: !this.state.add_people})
+    }
+
     render(){
-        return(
-            <div className="jar-settings">
-                <p className="jar-highlit">Settings</p>
-                <SettingSegment image={anon_jar_ico} name="Hide chart for others" callback={this.importDataFromChild} value={this.state.is_anon} type="switch"/>
-                <SettingSegment image={price_icon} callback={this.importDataFromChild} value={this.state.name} name="Jar name" type="input-long" />
-                <SettingSegment image={price_icon} callback={this.importDataFromChild} value={this.state.price_per_word} name="Price per word" type="input"/>
-                <SettingSegment image={price_icon} callback={this.importDataFromChild}  name="Jar color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
-
-                {
-                    this.state.save_button?
-                    <MyButton name="save" onClick={this.saveChanges} displayedText="SAVE CHANGES" className="mini-button green-save-button"/>
-                    :
-                    <MyButton name="delete" onClick={this.deleteJar} displayedText="DELETE JAR" className="mini-button red-delete-button"/>
-                }
-
-                {this.state.show_pallete? (
-                    <div >
-                        <TwitterPicker onChange={this.handleColorChange} className="color-pallete-jar" triangle="top-right" width="280px"/>
-                    </div>
-                    ): <></>
-                }
-            </div>
-        )
+        if (this.state.add_people){
+            return(
+                <div className="jar-settings">
+                    <p className="jar-highlit">Add new member</p>
+                    <UserSearch {...this.props}/>
+                </div>
+            )
+        }
+        else{
+            return(
+                <div className="jar-settings">
+                    <p className="jar-highlit">Settings</p>
+                    <SettingSegment image={anon_jar_ico} name="Add new member" callback={this.importDataFromChild} onClick={this.addPeople} type="more"/>
+                    <SettingSegment image={anon_jar_ico} name="Hide chart" callback={this.importDataFromChild} value={this.state.is_anon} type="switch"/>
+                    <SettingSegment image={price_icon} callback={this.importDataFromChild} value={this.state.name} name="Jar name" type="input-long" />
+                    <SettingSegment image={price_icon} callback={this.importDataFromChild} value={this.state.price_per_word} name="Price per word" type="input"/>
+                    <SettingSegment image={price_icon} callback={this.importDataFromChild}  name="Jar color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
+    
+                    {
+                        this.state.save_button?
+                        <MyButton name="save" onClick={this.saveChanges} displayedText="SAVE" className="mini-button green-save-button"/>
+                        :
+                        <MyButton name="delete" onClick={this.deleteJar} displayedText="DELETE JAR" className="mini-button red-delete-button"/>
+                    }
+    
+                    {this.state.show_pallete? (
+                        <div >
+                            <TwitterPicker onChangeComplete={this.handleColorChange} className="color-pallete-jar" triangle="top-right" width="280px"/>
+                        </div>
+                        ): <></>
+                    }
+                </div>
+            )
+        }
+        
     }
 }
 

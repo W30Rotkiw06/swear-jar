@@ -11,15 +11,16 @@ class Report extends Component{
             sus_color: "green",
             rem_color: "red",
             switch_state: this.props.suspend_remove,
+            div_class_name: "jar-report-member-choose" + size
         }
-
+    
     }
     reportMe = async(i) =>{
         if (!this.props.is_suspended || this.props.members_list[i] === this.props.email){
         let bill = this.props.jar.members
         if (this.props.manage_members){
             if (this.props.suspend_remove){ //remove people
-                if (window.confirm("Do you want to delete "+ this.props.members_names_list[i] + "?")){
+                if (window.confirm("Do you want to remove "+ this.props.members_names_list[i] + " from "+ this.props.jar.name +"?")){
                     bill.splice(i, 1);
                 }
             }else{
@@ -30,7 +31,6 @@ class Report extends Component{
             }
             await this.props.supabase.from('jars').update({members: bill}).eq("id", this.props.jar.id);
             this.props.callback_jar("just_removed", true)
-            this.props.close()
             this.props.update()
             
         }else{
@@ -69,7 +69,7 @@ class Report extends Component{
             <div className="jar-report">
                 <hr className="jar-header-line"/>
                 <p className="jar-highlit">{this.props.header}</p>
-                <div className="jar-report-member-choose">
+                <div className={this.state.div_class_name}>
                 {
                     this.props.members_list.map((person, i) =>
                         (<ReportedMember key={this.props.members_names_list[i]}
@@ -79,7 +79,6 @@ class Report extends Component{
                             nickname={this.props.members_names_list[i]}
                             profile_picture={this.props.members_profile_pictures[i]}
                             premium={this.props.members_premium[i]}
-                            size={this.state.size}
                             color={this.props.members_colors[i]}
                             manage_members={this.props.manage_members}
                             suspended={this.props.jar.members[i][2]}
