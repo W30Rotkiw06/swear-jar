@@ -23,6 +23,7 @@ class JarDetails  extends Component{
         let height = this.props.jar.total_money === 0? 180: 480;
         this.props.changeHeight(height);
         if (this.props.is_suspended){this.setState({head_message: "You are suspended"})}
+        else{this.setState({head_message: this.state.deafult_message})}
     }
 
     componentDidUpdate = ()=>{
@@ -35,6 +36,9 @@ class JarDetails  extends Component{
         }
         if (this.props.jar_height !== height){
         this.props.changeHeight(height);}
+
+        if (this.props.is_suspended && this.state.head_message !== "You are suspended"){this.setState({head_message: "You are suspended"})}
+        if (!this.props.is_suspended && this.state.head_message === "You are suspended"){this.setState({head_message: this.state.deafult_message})}
     }
 
     showHideSettings = () =>{
@@ -54,6 +58,10 @@ class JarDetails  extends Component{
 
         this.setState({[state_name]: state_value, head_message: "Select person to " + add_msg})
 
+    }
+
+    changePropsCallback =(state_name, state_value)=>{
+        this.props.callback_jar(state_name, state_value)
     }
     
 
@@ -78,7 +86,7 @@ class JarDetails  extends Component{
                     <JarSettings {...this.props}/>
                     :
                     <div>
-                        <Report {...this.props} {...this.state} header={this.state.head_message} manage_members={this.state.manage_members} callback={this.changeStateCallack}/>
+                        <Report {...this.props} {...this.state} header={this.state.head_message} manage_members={this.state.manage_members} callback={this.changeStateCallack} jar_callback={this.changePropsCallback}/>
                         {
                             this.props.jar.total_money === 0 || (this.props.jar.is_anon && !this.props.admin) || this.state.manage_members? <></>: <Chart {...this.props}/>
                         }

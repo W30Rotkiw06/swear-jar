@@ -36,7 +36,7 @@ class Login extends Component{
         this.props.fun("email", this.state.email)
 
         if(email.length > 4){
-            if(this.props.other_mails.includes(email)){
+            if(this.props.other_mails.includes(email) || this.props.other_mails.length === 0){
             this.setState({ email_comment: "" , btn_is_disabled: false});
             
             }else{

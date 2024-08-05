@@ -18,6 +18,9 @@ class Jar extends Component {
             jar_height: "80",
             user_as_member_id: null,
             is_suspended: null,
+            was_jar_updated: false,
+            just_removed: false,
+            users_are_actual: true,
 
         }
     }
@@ -26,6 +29,24 @@ class Jar extends Component {
     componentDidMount = async() =>{
         this.updateJar()
     }
+
+    componentDidUpdate = ()=>{
+        let is_suspended = false;
+        let i =0;
+        let newest_members_list = [];
+
+        for (var member of this.props.jar.members){
+            if (member[0] === this.props.email){is_suspended = this.props.jar.members[i][2]}
+            newest_members_list.push(member[0])
+            i +=1;
+        }
+        if (this.state.is_suspended !== is_suspended){this.setState({is_suspended: is_suspended})}
+        if (this.state.members_list.length !== newest_members_list.length && this.state.was_jar_updated){
+            this.setState({ just_removed: false, was_jar_updated: false, users_are_actual: false});
+            this.updateJar();
+        }
+    }
+
 
     updateJar= async()=>{
         let members_formated = "You";
@@ -65,8 +86,13 @@ class Jar extends Component {
             members_names_list: members_names_list,
             members_colors: members_colors,
             members_premium: members_premium,
-            admin: is_admin})
+            admin: is_admin,
+            was_jar_updated: true})
         
+        // update sum of money in swear jar
+        let sum= 0;
+        for (let member of this.props.jar.members){sum += member[1]}
+        await this.props.supabase.from("jars").update({total_money: sum}).eq("id", this.props.jar.id)
         
         for (var member of this.props.jar.members){
             // download profile picture
@@ -86,6 +112,9 @@ class Jar extends Component {
             this.setState(
                 {members_profile_pictures: members_profile_pictures})
         }
+
+        
+        
     }
 
     showHideDetails = () =>{
@@ -96,6 +125,10 @@ class Jar extends Component {
         this.setState({jar_height: newHeight})
     }
 
+    changeStateCallack = (state_name, state_value)=>{
+        this.setState({[state_name]: state_value})
+    }
+
     
     render(){
         
@@ -104,7 +137,7 @@ class Jar extends Component {
             {this.state.show_details === false?
                 <JarSimple changeHeight={this.changeHeight}  jar={this.props.jar} onClick={this.showHideDetails} {...this.state}/>
                 :
-                <JarDetails changeHeight={this.changeHeight} jar={this.props.jar} close={this.showHideDetails} email={this.props.email} {...this.state} session={this.props.session} update={this.updateJar} supabase={this.props.supabase}/>
+                <JarDetails changeHeight={this.changeHeight} jar={this.props.jar} callback_jar={this.changeStateCallack} close={this.showHideDetails} email={this.props.email} {...this.state} session={this.props.session} update={this.updateJar} supabase={this.props.supabase}/>
             }
             </div>
         )

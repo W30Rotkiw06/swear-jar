@@ -22,7 +22,7 @@ html{
   height: 15%;
   pointer-events: none;
   position: absolute;
-  top: 170px;
+  top: 150px;
   transform: translate(-50%, -50%); /* relative to element's height & width */
 }
 

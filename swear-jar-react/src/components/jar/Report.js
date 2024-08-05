@@ -14,7 +14,6 @@ class Report extends Component{
         }
 
     }
-
     reportMe = async(i) =>{
         if (!this.props.is_suspended || this.props.members_list[i] === this.props.email){
         let bill = this.props.jar.members
@@ -30,7 +29,9 @@ class Report extends Component{
                 }
             }
             await this.props.supabase.from('jars').update({members: bill}).eq("id", this.props.jar.id);
-            
+            this.props.callback_jar("just_removed", true)
+            this.props.close()
+            this.props.update()
             
         }else{
         
@@ -62,6 +63,8 @@ class Report extends Component{
         this.setState({switch_state: !this.state.switch_state, sus_color: color2, rem_color: color1})
     }
     render(){
+        try{
+
         return(
             <div className="jar-report">
                 <hr className="jar-header-line"/>
@@ -96,6 +99,8 @@ class Report extends Component{
             
             </div>  
         )
-    }
+        }catch(error){
+        }
+}
 }
 export default Report;

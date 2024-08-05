@@ -3,7 +3,7 @@ import { PieChart } from 'react-minimal-pie-chart';
 
 const Chart = (props) =>{
     let data= []
-    for(let i =0; i <props.members_list.length; i++){
+    for(let i =0; i <props.jar.members.length; i++){
         data.push(
             {id: i,
             title: props.members_names_list[i],
@@ -13,7 +13,7 @@ const Chart = (props) =>{
         })
     }
 
-
+    
     return(
         <div className="chart"> 
             <hr className="jar-header-line"/>   
@@ -36,10 +36,6 @@ const Chart = (props) =>{
             labelPosition={80}
             reveal={100}
             />
-
-
-
-
         </div>
     )
 }
