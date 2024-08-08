@@ -37,7 +37,7 @@ class SearchResults extends Component{
 
                 {
                     this.state.is_user_already_in_jar?
-                    <p style={{color: "red"}} className="search-result-email">Already member of the jar</p>
+                    <p style={{color: "red"}} className="search-result-email">Already member of this jar</p>
                     :
                     <p className="search-result-email">{this.props.email}</p>
                 }

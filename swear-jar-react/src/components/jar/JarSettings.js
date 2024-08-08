@@ -41,7 +41,7 @@ class JarSettings extends Component{
             price_per_word: this.state.price_per_word,
             is_anon: this.state.is_anon,
             color: this.state.color,
-            name: this.state.mail
+            name: this.state.name
 
         }).eq("id", this.props.jar.id)
         if (!error){

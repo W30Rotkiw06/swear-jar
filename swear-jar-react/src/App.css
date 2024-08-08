@@ -406,14 +406,18 @@ html{
   display: flex;
   justify-content: center;
   position: relative;
-  top: 40px;
+  text-align: center;
+  top: 50px;
   font-size: 16px;
   font-weight: 600;
+  height: 35px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 
 .suspend-or-remove-switch{
   position: absolute;
-  top: 5px;
+  top: -2px;
   margin: 5px;
 }
 
@@ -793,7 +797,7 @@ html{
 
  .user-search-input{
   font-size: 16px;
-  width: 220px;
+  width: 232px;
   height: 20px;
   background-color: rgba(0,0,0,0);
   border: 1px solid #000;
@@ -803,7 +807,7 @@ html{
   margin-right: 5px;
 }
 .user-search-button{
-  height: 20px;
+  height: 24px;
   width: 30px;
   border: 1px solid #000;
   background-color: #5cb182;
@@ -824,6 +828,9 @@ html{
   justify-content: center;
   text-align: center;
   align-items: center;
+  height: 192px;
+  overflow-y: scroll;
+
 
 }
 
@@ -840,6 +847,7 @@ html{
   border-radius: 25px;
   margin-top: 10px;
   cursor: pointer;
+
 }
 
 .search-result-image{

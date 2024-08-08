@@ -20,8 +20,12 @@ class UserSearch extends Component{
         let{data} = await this.props.supabase.from("users").select().textSearch("user_mail", this.state.searched_user);
         let{data: data2} = await this.props.supabase.from("users").select().textSearch("user_nickname", this.state.searched_user);
         let results = [];
-        if (data[0]){results.push(data[0])}
-        else{if (data2[0]){results.push(data2[0])}
+        
+        if (data.length >0){
+            for (let result of data){results.push(result)}}
+        else{if (data2.length >0){
+            for (let result of data2){results.push(result)}
+        }
         else{
             message =  "Nothing found";
         }}
@@ -41,7 +45,7 @@ class UserSearch extends Component{
     render(){
         return(
             <div className="user-search">
-                <input className="user-search-input" name="search" value={this.state.searched_user} onChange={this.handleSearchChange} placeholder="search users"/>
+                <input className="user-search-input" name="search" value={this.state.searched_user} onChange={this.handleSearchChange} placeholder="Enter name or email"/>
                 <button onClick={this.search} className="user-search-button">🔍</button>
                 {
                     this.state.search_results.length ===0? <p className="nothing-found">{this.state.message}</p>: <></>

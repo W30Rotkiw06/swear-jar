@@ -11,6 +11,7 @@ class ChangeProfilePicture extends Component{
             new_file: null
         }
         this.fileInputRef = React.createRef();
+
     }
 
     changeImg = (event)=>{
@@ -58,7 +59,11 @@ class ChangeProfilePicture extends Component{
             })
         }
 
-        await this.props.supabase.from("users").update({profile_picture: file_name}).eq("user_mail", this.props.email)
+        // download current datetime 
+        const date_now = new Date();
+        const utc_date = date_now.toISOString();
+
+        await this.props.supabase.from("users").update({profile_picture: file_name, last_photo_modification: utc_date}).eq("user_mail", this.props.email)
         this.props.back()
     } 
 

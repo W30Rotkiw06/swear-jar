@@ -88,10 +88,10 @@ class Report extends Component{
             </div>
             {
                 this.props.manage_members?
-                <div className="suspend-or-remove-menu" >
-                <p style={{color: this.state.sus_color}}>suspend</p>
+                <div style={{backgroundColor: this.props.jar.color}} className="suspend-or-remove-menu" >
+                <p style={{color: this.state.sus_color, alignSelf: "center"}}>suspend</p>
                 <Switch className="suspend-or-remove-switch" onChange={this.handleSwitch} checked={this.state.switch_state}/>
-                <p style={{color: this.state.rem_color}}>remove</p>
+                <p style={{color: this.state.rem_color, alignSelf: "center"}}>remove</p>
             </div>: <></>
             }
             
