@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/swear-jar/static/css/main.cea3283b.css",
-    "main.js": "/swear-jar/static/js/main.ba877d07.js",
+    "main.js": "/swear-jar/static/js/main.cc51c2cc.js",
     "static/js/198.40f70560.chunk.js": "/swear-jar/static/js/198.40f70560.chunk.js",
     "static/js/453.e56a6ff8.chunk.js": "/swear-jar/static/js/453.e56a6ff8.chunk.js",
     "static/media/main icon.png": "/swear-jar/static/media/main icon.37981b47af9744813ab3.png",
@@ -13,12 +13,12 @@
     "static/media/settings.png": "/swear-jar/static/media/settings.edb26555e4829e371276.png",
     "index.html": "/swear-jar/index.html",
     "main.cea3283b.css.map": "/swear-jar/static/css/main.cea3283b.css.map",
-    "main.ba877d07.js.map": "/swear-jar/static/js/main.ba877d07.js.map",
+    "main.cc51c2cc.js.map": "/swear-jar/static/js/main.cc51c2cc.js.map",
     "198.40f70560.chunk.js.map": "/swear-jar/static/js/198.40f70560.chunk.js.map",
     "453.e56a6ff8.chunk.js.map": "/swear-jar/static/js/453.e56a6ff8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cea3283b.css",
-    "static/js/main.ba877d07.js"
+    "static/js/main.cc51c2cc.js"
   ]
 }
