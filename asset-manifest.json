@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/swear-jar/static/css/main.457d228e.css",
-    "main.js": "/swear-jar/static/js/main.9b3a5104.js",
+    "main.css": "/swear-jar/static/css/main.bbb5d864.css",
+    "main.js": "/swear-jar/static/js/main.5bd3f7f1.js",
     "static/js/198.40f70560.chunk.js": "/swear-jar/static/js/198.40f70560.chunk.js",
     "static/js/453.e56a6ff8.chunk.js": "/swear-jar/static/js/453.e56a6ff8.chunk.js",
     "static/media/main icon.png": "/swear-jar/static/media/main icon.37981b47af9744813ab3.png",
@@ -17,13 +17,13 @@
     "static/media/user search.JPG": "/swear-jar/static/media/user search.fd8617b590db8efc8ce3.JPG",
     "static/media/profile badge.JPG": "/swear-jar/static/media/profile badge.e8ada2fb26bdce4bf653.JPG",
     "index.html": "/swear-jar/index.html",
-    "main.457d228e.css.map": "/swear-jar/static/css/main.457d228e.css.map",
-    "main.9b3a5104.js.map": "/swear-jar/static/js/main.9b3a5104.js.map",
+    "main.bbb5d864.css.map": "/swear-jar/static/css/main.bbb5d864.css.map",
+    "main.5bd3f7f1.js.map": "/swear-jar/static/js/main.5bd3f7f1.js.map",
     "198.40f70560.chunk.js.map": "/swear-jar/static/js/198.40f70560.chunk.js.map",
     "453.e56a6ff8.chunk.js.map": "/swear-jar/static/js/453.e56a6ff8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.457d228e.css",
-    "static/js/main.9b3a5104.js"
+    "static/css/main.bbb5d864.css",
+    "static/js/main.5bd3f7f1.js"
   ]
 }
