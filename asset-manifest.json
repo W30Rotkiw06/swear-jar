@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/swear-jar/static/css/main.bbb5d864.css",
-    "main.js": "/swear-jar/static/js/main.5bd3f7f1.js",
+    "main.css": "/swear-jar/static/css/main.57978712.css",
+    "main.js": "/swear-jar/static/js/main.51abfaf4.js",
     "static/js/198.40f70560.chunk.js": "/swear-jar/static/js/198.40f70560.chunk.js",
     "static/js/453.e56a6ff8.chunk.js": "/swear-jar/static/js/453.e56a6ff8.chunk.js",
     "static/media/main icon.png": "/swear-jar/static/media/main icon.37981b47af9744813ab3.png",
@@ -13,17 +13,18 @@
     "static/media/at.JPG": "/swear-jar/static/media/at.7be37e44fe59815eca6c.JPG",
     "static/media/dog tag.JPG": "/swear-jar/static/media/dog tag.cf2d646c0e91e5018667.JPG",
     "static/media/settings.png": "/swear-jar/static/media/settings.edb26555e4829e371276.png",
+    "static/media/close button.JPG": "/swear-jar/static/media/close button.c86828dea487ae348983.JPG",
     "static/media/security.JPG": "/swear-jar/static/media/security.baeb8efb6c683cda8020.JPG",
     "static/media/user search.JPG": "/swear-jar/static/media/user search.fd8617b590db8efc8ce3.JPG",
     "static/media/profile badge.JPG": "/swear-jar/static/media/profile badge.e8ada2fb26bdce4bf653.JPG",
     "index.html": "/swear-jar/index.html",
-    "main.bbb5d864.css.map": "/swear-jar/static/css/main.bbb5d864.css.map",
-    "main.5bd3f7f1.js.map": "/swear-jar/static/js/main.5bd3f7f1.js.map",
+    "main.57978712.css.map": "/swear-jar/static/css/main.57978712.css.map",
+    "main.51abfaf4.js.map": "/swear-jar/static/js/main.51abfaf4.js.map",
     "198.40f70560.chunk.js.map": "/swear-jar/static/js/198.40f70560.chunk.js.map",
     "453.e56a6ff8.chunk.js.map": "/swear-jar/static/js/453.e56a6ff8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbb5d864.css",
-    "static/js/main.5bd3f7f1.js"
+    "static/css/main.57978712.css",
+    "static/js/main.51abfaf4.js"
   ]
 }
