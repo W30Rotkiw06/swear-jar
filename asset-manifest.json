@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/swear-jar/static/css/main.57978712.css",
+    "main.css": "/swear-jar/static/css/main.e0df8ce2.css",
     "main.js": "/swear-jar/static/js/main.51abfaf4.js",
     "static/js/198.40f70560.chunk.js": "/swear-jar/static/js/198.40f70560.chunk.js",
     "static/js/453.e56a6ff8.chunk.js": "/swear-jar/static/js/453.e56a6ff8.chunk.js",
@@ -18,13 +18,13 @@
     "static/media/user search.JPG": "/swear-jar/static/media/user search.fd8617b590db8efc8ce3.JPG",
     "static/media/profile badge.JPG": "/swear-jar/static/media/profile badge.e8ada2fb26bdce4bf653.JPG",
     "index.html": "/swear-jar/index.html",
-    "main.57978712.css.map": "/swear-jar/static/css/main.57978712.css.map",
+    "main.e0df8ce2.css.map": "/swear-jar/static/css/main.e0df8ce2.css.map",
     "main.51abfaf4.js.map": "/swear-jar/static/js/main.51abfaf4.js.map",
     "198.40f70560.chunk.js.map": "/swear-jar/static/js/198.40f70560.chunk.js.map",
     "453.e56a6ff8.chunk.js.map": "/swear-jar/static/js/453.e56a6ff8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.57978712.css",
+    "static/css/main.e0df8ce2.css",
     "static/js/main.51abfaf4.js"
   ]
 }
