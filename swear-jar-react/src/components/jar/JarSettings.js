@@ -1,7 +1,12 @@
 import { Component } from "react";
 import SettingSegment from "../SettingSegment";
-import anon_jar_ico from "../../assets/lama incognito.jpeg"
-import price_icon from "../../assets/lama with money.jpeg"
+
+import add_new_mem_icon from "../../assets/user search.JPG";
+import anon_jar_ico from "../../assets/lama incognito.jpeg";
+import dog_tag_icon from "../../assets/dog tag.JPG";
+import price_icon from "../../assets/lama with money.jpeg";
+import paint_brush_icon from "../../assets/paint brush.png";
+
 
 import { TwitterPicker } from "react-color";
 import MyButton from "../MyButton"
@@ -73,11 +78,11 @@ class JarSettings extends Component{
             return(
                 <div className="jar-settings">
                     <p className="jar-highlit">Settings</p>
-                    <SettingSegment image={anon_jar_ico} name="Add new member" callback={this.importDataFromChild} onClick={this.addPeople} type="more"/>
+                    <SettingSegment image={add_new_mem_icon} name="Add new member" callback={this.importDataFromChild} onClick={this.addPeople} type="more"/>
                     <SettingSegment image={anon_jar_ico} name="Hide chart" callback={this.importDataFromChild} value={this.state.is_anon} type="switch"/>
-                    <SettingSegment image={price_icon} callback={this.importDataFromChild} value={this.state.name} name="Jar name" type="input-long" />
+                    <SettingSegment image={dog_tag_icon} callback={this.importDataFromChild} value={this.state.name} name="Jar name" type="input-long" />
                     <SettingSegment image={price_icon} callback={this.importDataFromChild} value={this.state.price_per_word} name="Price per word" type="input"/>
-                    <SettingSegment image={price_icon} callback={this.importDataFromChild}  name="Jar color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
+                    <SettingSegment image={paint_brush_icon} callback={this.importDataFromChild}  name="Jar color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
     
                     {
                         this.state.save_button?

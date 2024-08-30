@@ -216,6 +216,7 @@ html{
   align-items: center;
   left: 12px;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .headline{
@@ -276,7 +277,6 @@ html{
   border: 2px solid #fff;
   margin: 10px;
   transition: height 0.4s;
-  cursor: pointer;
 
 }
 
@@ -473,6 +473,7 @@ html{
   border-radius: 27px;
   position: relative;
   top: 10px;
+  object-fit: cover;
 }
 
 .jar-report-member-badge{
@@ -702,6 +703,7 @@ html{
   right: 15px;
   height: 24px;
   width: 24px;
+  justify-content: center;
 }
 
 .settings-segment-switch{
@@ -745,7 +747,8 @@ html{
   justify-content: center;
   align-items: center;
   position: relative;
-  left: 23px
+  left: 23px;
+  object-fit: cover;
 }
 
 .select-color-settings{

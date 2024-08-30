@@ -9,6 +9,11 @@ import ChangePassword from "./ChangePassword";
 
 import { TwitterPicker } from "react-color";
 
+import paint_brush_icon from "../../assets/paint brush.png";
+import profile_badge_icon from "../../assets/profile badge.JPG";
+import at_icon from "../../assets/at.JPG";
+import security_icon from "../../assets/security.JPG";
+
 class ProfileSettings extends Component{
     constructor(props){
         super(props);
@@ -37,7 +42,9 @@ class ProfileSettings extends Component{
         await this.props.supabase.auth.signOut()
         this.props.changeAppState("session", "");
         this.props.changeAppState("previous", "");
+        this.props.changeAppState("avalaible_jars", [])
         this.props.changeAppState("page", "start");
+
     }
 
     chooseProfilePicture = () =>{
@@ -102,10 +109,10 @@ class ProfileSettings extends Component{
     
                         <div style={{position: "relative", left: "20px"}} className="settings">
                             <SettingSegment image={this.props.profile_picture} name="Change profile picture" type="more" onClick={this.chooseProfilePicture}/>
-                            <SettingSegment image={this.props.profile_picture} name="Change your color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
-                            <SettingSegment image={this.props.profile_picture} name="Change name" type="more" onClick={this.changeName}/>
-                            <SettingSegment image={this.props.profile_picture} name="Change email" type="more" onClick={this.changeEmail}/>
-                            <SettingSegment image={this.props.profile_picture} name="Change password" type="more" onClick={this.changePassword}/>
+                            <SettingSegment image={paint_brush_icon} name="Change your color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
+                            <SettingSegment image={profile_badge_icon} name="Change name" type="more" onClick={this.changeName}/>
+                            <SettingSegment image={at_icon} name="Change email" type="more" onClick={this.changeEmail}/>
+                            <SettingSegment image={security_icon} name="Change password" type="more" onClick={this.changePassword}/>
                         </div>
 
                         

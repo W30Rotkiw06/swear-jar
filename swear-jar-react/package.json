@@ -1,6 +1,6 @@
 {
   "name": "swear-jar",
-  "version": "0.9.1",
+  "version": "0.10.2",
   "private": true,
   "homepage": "https://w30rotkiw06.github.io/swear-jar",
   "dependencies": {
@@ -21,6 +21,7 @@
     "react-ios-switch": "^0.1.19",
     "react-minimal-pie-chart": "^8.4.0",
     "react-scripts": "5.0.1",
+    "sharp": "^0.33.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -5,6 +5,7 @@ import JarSettings from "./JarSettings";
 import LeaveJar from "./LeaveJar";
 import { Component } from "react";
 
+import DownloadProfilePicture from "../DownloadProfilePicture";
 class JarDetails  extends Component{
     constructor(props){
         super(props);

@@ -13,8 +13,16 @@ class Report extends Component{
             switch_state: this.props.suspend_remove,
             div_class_name: "jar-report-member-choose" + size
         }
-    
     }
+
+    componentDidUpdate = ()=>{
+        let size = this.props.members_list.length > 5? "-small": "";
+        let div_class_name = "jar-report-member-choose" + size;
+        if(div_class_name !== this.state.div_class_name){
+            this.setState({div_class_name: div_class_name})
+        }
+    }
+
     reportMe = async(i) =>{
         if (!this.props.is_suspended || this.props.members_list[i] === this.props.email){
         let bill = this.props.jar.members
@@ -77,7 +85,7 @@ class Report extends Component{
                             report={this.reportMe}
                             email={person}
                             nickname={this.props.members_names_list[i]}
-                            profile_picture={this.props.members_profile_pictures[i]}
+                            profile_picture={this.props.members_profile_pictures_object[person]}
                             premium={this.props.members_premium[i]}
                             color={this.props.members_colors[i]}
                             manage_members={this.props.manage_members}

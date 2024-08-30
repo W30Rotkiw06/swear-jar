@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MyButton from "../../components/MyButton";
 
+
 class ChangeProfilePicture extends Component{
     constructor(props){
         super(props);
@@ -51,10 +52,11 @@ class ChangeProfilePicture extends Component{
             })
             console.log(error)
         }else{
-            file_name = this.props.email + ".jpg"
+            file_name = this.props.email + ".jpg";
+            
             var { data, error } = await this.props.supabase.storage.from('profile_pictures')
-            .upload(file_name, this.state.new_file, {
-                cacheControl: '3600',
+            .upload(file_name, this.state.new_file,{
+                cacheControl: '1200',
                 upsert: false
             })
         }

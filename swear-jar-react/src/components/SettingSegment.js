@@ -44,7 +44,7 @@ class SettingSegment extends Component{
             case "color":
                 return(
                     <div onClick={this.props.onClick} className="settings-segment" >
-                        <img src={this.props.image} alt="img" className="settings-segment-img"/>
+                        <img style={{backgroundColor: this.props.color}} src={this.props.image} alt="img" className="settings-segment-img"/>
                         <p className="settings-segment-title">{this.props.name}</p>
                         <div className="select-color-settings" style={{backgroundColor: this.props.color, border: "1px solid", borderColor: "#000"}}/>
     

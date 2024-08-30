@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Jar from "../components/jar/Jar";
 import MyButton from "../components/MyButton"
 import AddNewJar from "../components/jar/AddNewJar";
+import DownloadProfilePicture from "../components/DownloadProfilePicture";
 
 class Home extends Component{
     constructor(props){
@@ -9,9 +10,9 @@ class Home extends Component{
         this.state = {
             name: "",
             email: "",
-            avalaible_jars: [],
+            avalaible_jars: this.props.avalaible_jars,
             profile_picture: "",
-            message: "Loading content...",
+            message: this.props.avalaible_jars.length === 0?  "Loading content...": "Updating content...",
             deafult_color: "",
             add_new_jar_window: false,
             subscription: null
@@ -36,8 +37,8 @@ class Home extends Component{
           .download(`${pp_file_name}?t=${new Date().getTime()}`);
           if (error_pp) {console.error("Error downloading profile picture:", error_pp);
           this.setState({ name: name[0], email: this.props.email, error: error_pp });
-          return;
         }
+        
         
         const profile_picture_blob = new Blob([profile_picture_data]);
         const profile_picture_url = URL.createObjectURL(profile_picture_blob);
@@ -45,10 +46,10 @@ class Home extends Component{
         this.setState({name: name[0],email: this.props.email,profile_picture: profile_picture_url, color: color});
         this.props.fun("name", name[0])
         this.props.fun("profile_picture", profile_picture_url)
+        
 
         // creating subscription that will update jars
         await this.updateJars();
-
         this.props.supabase.channel(this.props.email).on('postgres_changes', { event: '*', schema: 'public', table: 'jars' }, payload => {
         console.log('Change received!', payload)
         this.updateJars()
@@ -56,7 +57,7 @@ class Home extends Component{
     }
 
     componentWillUnmount = async ()=>{
-        this.props.supabase.removeAllChannels()
+        this.props.supabase.removeAllChannels();
     }
 
     updateJars = async() =>{
@@ -64,13 +65,14 @@ class Home extends Component{
         let jar_list = (await this.props.supabase.from("jars").select().order('id', {ascending: true })).data
         for (let jar of jar_list){
             for (let member of jar["members"]){
-                if (member[0] === this.state.email){
+                if (member[0] === this.props.email){
                     jars_with_user.push(jar);
                 }
             }
         }
         let message = jars_with_user.length === 0? "You don't have any opened swear jars yet": "";
         this.setState({avalaible_jars: jars_with_user, message: message});
+        this.props.fun("avalaible_jars", jars_with_user)
     }
 
 

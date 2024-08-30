@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import JarSimple from "./JarSimple";
 import JarDetails from "./JarDetails";
+import DownloadProfilePicture from "../DownloadProfilePicture";
 
 class Jar extends Component {
     constructor (props){
@@ -21,6 +22,7 @@ class Jar extends Component {
             was_jar_updated: false,
             just_removed: false,
             users_are_actual: true,
+            cursor: "deafult"
 
         }
     }
@@ -34,6 +36,7 @@ class Jar extends Component {
         let is_suspended = false;
         let i =0;
         let newest_members_list = [];
+        if (this.props.message === "" && this.state.cursor === "deafult"){this.setState({cursor: "pointer"})}
 
         for (var member of this.props.jar.members){
             if (member[0] === this.props.email){is_suspended = this.props.jar.members[i][2]}
@@ -91,34 +94,29 @@ class Jar extends Component {
         
         // update sum of money in swear jar
         let sum= 0;
+        let mem_prof_pic_but_object = {}
         for (let member of this.props.jar.members){sum += member[1]}
         await this.props.supabase.from("jars").update({total_money: sum}).eq("id", this.props.jar.id)
         
-        for (var member of this.props.jar.members){
-            // download profile picture
-            let member_data = (await this.props.supabase.from("users").select().eq("user_mail", member[0])).data[0]
-            let member_file_name = member_data.profile_picture;
+        await Promise.all(
+            this.props.jar.members.map(async (member) => {
+                const profile_picture_url = await DownloadProfilePicture(member[0], this.props.supabase);
+                mem_prof_pic_but_object[member[0]] = profile_picture_url;
+            })
+        );
 
-            const { data: profile_picture_data, error: error_pp } = await this.props.supabase.storage.from('profile_pictures')
-            .download(`${member_file_name}?t=${new Date().getTime()}`);
-            if (error_pp) {
-                console.error("Error downloading profile picture:", error_pp);
-                return;
-            }
-
-            const profile_picture_blob = new Blob([profile_picture_data]);
-            const profile_picture_url = URL.createObjectURL(profile_picture_blob);
-            members_profile_pictures.push(profile_picture_url);
+            
             this.setState(
-                {members_profile_pictures: members_profile_pictures})
-        }
-
+                {members_profile_pictures: members_profile_pictures, members_profile_pictures_object: mem_prof_pic_but_object})
+        
         
         
     }
 
     showHideDetails = () =>{
-        this.setState({show_details: !this.state.show_details})
+        if (this.state.show_details === false && this.props.message !== ""){
+
+        }else{ this.setState({show_details: !this.state.show_details})}
     }
 
     changeHeight = (newHeight) =>{
@@ -133,7 +131,7 @@ class Jar extends Component {
     render(){
         
         return(
-            <div className="jar" style={{backgroundColor: this.props.jar.color, height:this.state.jar_height + "px"}}>
+            <div className="jar" style={{backgroundColor: this.props.jar.color, height:this.state.jar_height + "px", cursor: this.state.cursor}}>
             {this.state.show_details === false?
                 <JarSimple changeHeight={this.changeHeight}  jar={this.props.jar} onClick={this.showHideDetails} {...this.state}/>
                 :

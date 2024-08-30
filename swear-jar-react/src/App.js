@@ -22,7 +22,8 @@ class App extends Component{
       name: "",
       profile_picture: "",
       other_mails: "",
-      online: ""
+      online: "",
+      avalaible_jars: []
     }
     
 
