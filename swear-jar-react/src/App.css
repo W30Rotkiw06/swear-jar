@@ -348,9 +348,8 @@ html{
 .jar-kick-logo{
   position: absolute;
   top: 5px;
-  right: 55px;
+  right: 50px;
   height: 40px;
-  width: 40px ;
   cursor: pointer;
 }
 
@@ -490,7 +489,7 @@ html{
 
 .jar-report-member-suspended{
   position: absolute;
-  width: 20px;
+  width: 12px;
   right: 0px;
   bottom: 16px;
 }

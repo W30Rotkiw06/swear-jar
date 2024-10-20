@@ -1,4 +1,5 @@
 import settings_logo from "../../assets/settings.png"
+import manage_users_logo  from "../../assets/delete user.png"
 import Report from "./Report";
 import Chart from "./Chart";
 import JarSettings from "./JarSettings";
@@ -77,7 +78,7 @@ class JarDetails  extends Component{
                     this.props.admin?
                     <div>
                         <img onClick={this.showHideSettings} className="jar-settings-logo"  src={settings_logo} alt="s"/>
-                        {!this.state.show_settings && this.props.members_list.length >1? <img onClick={this.showHideKickPeople} className="jar-kick-logo"  src={settings_logo} alt="k"/>: <></>}
+                        {!this.state.show_settings && this.props.members_list.length >1? <img onClick={this.showHideKickPeople} className="jar-kick-logo"  src={manage_users_logo} alt="k"/>: <></>}
                         
                     </div>: <></>
                 }
