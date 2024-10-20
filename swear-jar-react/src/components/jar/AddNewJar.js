@@ -2,6 +2,7 @@ import { Component } from "react"
 import MyInput from "../MyInput"
 import { TwitterPicker } from 'react-color';
 import MyButton from "../MyButton";
+import close_icon from "../../assets/close button.JPG";
 
 class AddNewJar extends Component{
     constructor(props){
@@ -56,7 +57,7 @@ class AddNewJar extends Component{
             <div>
                 <div style={{borderColor: this.state.jar_color}} className="add-jar-win">
             <h2 style={{color: "#fff", position: "absolute", top: "-13px", left: "60px"}}>Add new jar</h2>
-            <div onClick={this.props.closeWin} className="jar-close-button">×</div>
+            <img src={close_icon} alt="" className="jar-close-button" onClick={this.props.closeWin}/>
             <div style={{position: "relative", left: "27px"}}>
                 <MyInput
                     type="text"

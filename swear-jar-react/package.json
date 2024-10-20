@@ -1,6 +1,6 @@
 {
   "name": "swear-jar",
-  "version": "0.10.2",
+  "version": "0.10.4",
   "private": true,
   "homepage": "https://w30rotkiw06.github.io/swear-jar",
   "dependencies": {
@@ -8,11 +8,13 @@
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^5.16.4",
     "@mui/x-charts": "^7.11.0",
+    "@scthakuri/adblock-detector": "^1.0.7",
     "@supabase/auth-ui-react": "^0.4.7",
     "@supabase/supabase-js": "^2.44.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "adblock-detector": "^2.1.0",
     "gh-pages": "^6.1.1",
     "js-cookie": "^3.0.5",
     "react": "^18.3.1",

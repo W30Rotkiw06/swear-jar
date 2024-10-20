@@ -26,7 +26,7 @@ class CreateAccount extends Component{
         this.setState({name: event.target.value})
     }
 
-    // Checking if provided "mail" is mail and if there is no user with this mail already used
+    // Checking if provided "mail" is mail
     checkMail = event => {
         let atCount = 0;
         let dotCount = 0;
@@ -45,19 +45,15 @@ class CreateAccount extends Component{
             if (atCount !== 1 || dotCount !== 1) {
                 this.setState({ email_comment: "That's not an email"});
             } else {
-                if(this.props.other_mails.includes(email)){
-                    this.setState({ email_comment: "This email is already used"});
-                }else{
-                    this.setState({ email_comment: "" });
-                    mail_correct = true;
-                    this.props.fun("email", email)
-                }
+                this.setState({ email_comment: "" });
+                mail_correct = true;
+                this.props.fun("email", email);
             }
             
         }
         
         if (this.state.password.length >=8 && this.state.password === this.state.password2 && mail_correct === true){
-            this.setState({"email": email, password_comment: "", password_comment2: "", btn_is_disabled: false, mail_correct:true})
+            this.setState({"email": email, password_comment: "", password2_comment: "", btn_is_disabled: false, mail_correct:true})
         }else{this.setState({"email": email, btn_is_disabled: true, mail_correct: mail_correct})}
     }
 
@@ -79,11 +75,11 @@ class CreateAccount extends Component{
         else{this.setState({password_comment: ""})}
 
         if(password !== password2 && password2 !== ""){
-            this.setState({password_comment2: "Passwords are diffrent", btn_is_disabled: true})}
-        else{this.setState({password_comment2: ""})}
+            this.setState({password2_comment: "Passwords are diffrent", btn_is_disabled: true})}
+        else{this.setState({password2_comment: ""})}
 
         if (password.length >=8 && password === password2 && this.state.mail_correct === true){
-            this.setState({password_comment: "", password_comment2: "", btn_is_disabled: false})
+            this.setState({password_comment: "", password2_comment: "", btn_is_disabled: false})
             }
         this.setState({[inputName]: inputValue})
     }
@@ -118,7 +114,8 @@ class CreateAccount extends Component{
             if (error.message === "Invalid login credentials"){error.message = "Password is incorrect"}
             this.setState({ 
                 data: null,
-                password_comment: error.message 
+                password_comment: error.message,
+                password2_comment: error.message 
             });
         }
     }
@@ -128,10 +125,10 @@ class CreateAccount extends Component{
         return(
             <div className="create_account">
                 <MyButton onClick={this.props.back} name="back" displayedText="← BACK" className="back-button"/>
-                <div className="create_account_logo"><BigLogo/></div>
             <div className="login-signup-inputs">
+                <div className="create_account_logo"><BigLogo/></div>
           <p>
-          <br/><br/><br/>Welcome to swear jar.
+          Welcome to swear jar.
           </p>
             <MyInput type="text"
                     name="name"
@@ -163,7 +160,7 @@ class CreateAccount extends Component{
                     label="Confirm your password"
                     onFocus={this.checkPasswords}
                     onClick={this.checkPasswords}
-                    additionalInfo={this.state.password_comment2}/>
+                    additionalInfo={this.state.password2_comment}/>
                 <br/><br/><br/>
                 <MyButton name="continue" className="standard-button" displayedText={this.state.btn_lbl} onClick={this.signUpToSupabase} isDisabled={this.state.btn_is_disabled}/>
             </div></div>

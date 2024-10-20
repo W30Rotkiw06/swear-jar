@@ -5,7 +5,8 @@ import JarSettings from "./JarSettings";
 import LeaveJar from "./LeaveJar";
 import { Component } from "react";
 
-import DownloadProfilePicture from "../DownloadProfilePicture";
+import close_icon from "../../assets/close button.JPG";
+
 class JarDetails  extends Component{
     constructor(props){
         super(props);
@@ -70,7 +71,8 @@ class JarDetails  extends Component{
     render(){
         return(
             <div className="details">
-                <div className="jar-close-button" onClick={this.props.close}>×</div>
+                
+                <img src={close_icon} alt="" className="jar-close-button" onClick={this.props.close}/>
                 {
                     this.props.admin?
                     <div>

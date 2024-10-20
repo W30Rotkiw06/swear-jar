@@ -6,8 +6,8 @@ var WelcomeScreen = props => {
     const txt = active? "Log in or sign up to continue.": "Loading content...";
     return(
         <div>
-        <BigLogo/>
         <div className="Login-interface">
+        <BigLogo/>
         <h1>Swear jar</h1>
           <p>
             Welcome to swear jar app.<br/>{txt} 

@@ -19,12 +19,13 @@ html{
 }
 
 .App-logo {
-  height: 15%;
+  height: 120px;
   pointer-events: none;
   position: absolute;
-  top: 150px;
+  top: -70px;
   transform: translate(-50%, -50%); /* relative to element's height & width */
 }
+
 
 .Login-interface{
   position: absolute;
@@ -217,6 +218,10 @@ html{
   left: 12px;
   cursor: pointer;
   object-fit: cover;
+  background-color: #fff;
+  color: #fff;
+  padding: -2px #000;
+  font-size: 0px;
 }
 
 .headline{
@@ -662,6 +667,10 @@ html{
   justify-content: center;
 }
 
+
+
+
+
 .settings-segment{
   display: flexbox;
   width: 313px;
@@ -698,9 +707,9 @@ html{
 
 .settings-segment-arrow{
   text-align: right;
-  position: absolute;
-  top: -20px;
-  right: 15px;
+  position: relative;
+  top: -44px;
+  left: 270px;
   height: 24px;
   width: 24px;
   justify-content: center;
@@ -749,6 +758,8 @@ html{
   position: relative;
   left: 23px;
   object-fit: cover;
+  background-color: #fff;
+  color: #fff;
 }
 
 .select-color-settings{

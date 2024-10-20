@@ -98,6 +98,7 @@ async function DownloadProfilePicture(email, supabase){
                     console.error("Error downloading profile picture:", error_pp);
                     return null;
                 }
+                console.log("Downloaded from supabase for ", email)
     
                 const profile_picture_blob = new Blob([profile_picture_data]);
                 addOrUpdateUserData(email, profile_picture_blob,last_mod_date);
@@ -114,6 +115,7 @@ async function DownloadProfilePicture(email, supabase){
                 console.error("Error downloading profile picture:", error_pp);
                 return null;
             }
+            console.log("Downloaded from supabase for ", email)
     
             const profile_picture_blob = new Blob([profile_picture_data]);
 

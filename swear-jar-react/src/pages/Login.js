@@ -12,7 +12,6 @@ class Login extends Component{
         this.state = {
             email: "",
             password: "",
-            email_comment: "",
             password_comment: "",
             btn_lbl: "CONTINUE",
             btn_is_disabled: true
@@ -36,13 +35,12 @@ class Login extends Component{
         this.props.fun("email", this.state.email)
 
         if(email.length > 4){
-            if(this.props.other_mails.includes(email) || this.props.other_mails.length === 0){
-            this.setState({ email_comment: "" , btn_is_disabled: false});
+            this.setState({btn_is_disabled: false});
             
             }else{
-                this.setState({ email_comment: "There is no account on this mail", btn_is_disabled: true});
+                this.setState({btn_is_disabled: true});
             }
-        }
+        
     }
 
     // Logging to swear jar using data given earlier
@@ -70,7 +68,7 @@ class Login extends Component{
             });
             
         } catch (error) {
-            if (error.message === "Invalid login credentials"){error.message = "Password is incorrect"}
+            if (error.message === "Invalid login credentials"){error.message = "Password or email are incorrect"}
             this.setState({ 
                 data: null,
                 password_comment: error.message,
@@ -84,8 +82,8 @@ class Login extends Component{
         return(
             <div>
                 <MyButton onClick={this.props.back} name="back" displayedText="← BACK" className="back-button"/>
-                <BigLogo/>
             <div className="login-signup-inputs">
+                <BigLogo/>
             <p>Welcome back. Enter <br/>your email and password. 
             </p>
                 <MyInput type="text"
@@ -95,8 +93,7 @@ class Login extends Component{
                     onChange={this.checkMail}
                     onFocus={this.checkMail}
                     label="Enter your mail"
-                    autoFocus={true}
-                    additionalInfo={this.state.email_comment}/>
+                    autoFocus={true}/>
                 <MyInput type="password"
                     name="password"
                     className="standard-input"

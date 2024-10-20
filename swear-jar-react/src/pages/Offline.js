@@ -1,4 +1,3 @@
-import BigLogo from "../components/BigLogo";
 import MyButton from "../components/MyButton";
 import lama_offline from "../assets/lama offline.jpg"
 const Offline = props =>{

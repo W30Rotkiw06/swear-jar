@@ -9,8 +9,9 @@ import ChangePassword from "./ChangePassword";
 
 import { TwitterPicker } from "react-color";
 
-import paint_brush_icon from "../../assets/paint brush.png";
 import profile_badge_icon from "../../assets/profile badge.JPG";
+import paint_brush_icon from "../../assets/paint brush.png";
+import dog_tag_icon from "../../assets/dog tag.JPG";
 import at_icon from "../../assets/at.JPG";
 import security_icon from "../../assets/security.JPG";
 
@@ -108,9 +109,9 @@ class ProfileSettings extends Component{
                         </div>
     
                         <div style={{position: "relative", left: "20px"}} className="settings">
-                            <SettingSegment image={this.props.profile_picture} name="Change profile picture" type="more" onClick={this.chooseProfilePicture}/>
+                            <SettingSegment image={profile_badge_icon} name="Change profile picture" type="more" onClick={this.chooseProfilePicture}/>
                             <SettingSegment image={paint_brush_icon} name="Change your color" type="color" color={this.state.color} onClick={this.showHidePallete}/>
-                            <SettingSegment image={profile_badge_icon} name="Change name" type="more" onClick={this.changeName}/>
+                            <SettingSegment image={dog_tag_icon} name="Change name" type="more" onClick={this.changeName}/>
                             <SettingSegment image={at_icon} name="Change email" type="more" onClick={this.changeEmail}/>
                             <SettingSegment image={security_icon} name="Change password" type="more" onClick={this.changePassword}/>
                         </div>

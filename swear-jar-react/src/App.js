@@ -6,6 +6,7 @@ import WelcomeScreen from './pages/WelcomeScreen';
 import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
 import Offline from './pages/Offline';
+import AdBlock from './pages/AdBlock';
 import Home from './pages/Home';
 import ProfileSettings from './pages/ProfileSettings/ProfileSettings';
 
@@ -13,6 +14,7 @@ import ProfileSettings from './pages/ProfileSettings/ProfileSettings';
 class App extends Component{
   constructor(props){
     super(props);
+
     this.state = {
       page: "start",
       previous: "",
@@ -21,7 +23,6 @@ class App extends Component{
       email: "",
       name: "",
       profile_picture: "",
-      other_mails: "",
       online: "",
       avalaible_jars: []
     }
@@ -30,15 +31,8 @@ class App extends Component{
   }
 
   async componentDidMount(){
-    this.checkInternet()
-    const other_mails = (await supabase.from("users").select("user_mail")).data;
-    if (other_mails !== null){
-      const mails = other_mails.map(item => item.user_mail);
-      this.setState({other_mails: mails, online: true});
-    }else{
-      this.setState({online: false, page: "offline", previous: "start"}); 
+    this.checkInternet();
 
-  }
 }
 
   checkInternet = async () => { 
@@ -87,7 +81,7 @@ class App extends Component{
         case "start":
           return (
           <div className='App'>
-            <WelcomeScreen fn={this.ButtonClicked} active={this.state.online}/>      
+            <WelcomeScreen fn={this.ButtonClicked} active={this.state.online}/> 
           </div>
           )
 
@@ -95,6 +89,12 @@ class App extends Component{
           return(
             <div className='App'>
             <Offline retryConnection={this.checkInternet}/>
+            </div>
+          )
+        case "adblock":
+          return(
+            <div className='App'>
+            <AdBlock back={this.BackButton}/>
             </div>
           )
         case "login":
